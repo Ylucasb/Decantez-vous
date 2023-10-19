@@ -4,6 +4,8 @@ import (
 	"decantez-vous/back/handler"
 	"fmt"
 	"net/http"
+
+	_ "github.com/mattn/go-sqlite3"
 )
 
 var port = ":8080"

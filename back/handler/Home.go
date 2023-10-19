@@ -1,42 +1,36 @@
 package handler
 
 import (
-	"fmt"
+	"decantez-vous/back/datamanagement"
 	"html/template"
 	"net/http"
+	"time"
 )
 
 type structDisplayHome struct {
-	AllTopics         []string
-	HasAcceptedCookie string
-	IsConnected       bool
-	IsAdmin           bool
-}
-
-func getCookieValue(cookie *http.Cookie) string {
-	var valueReturned string
-	test := false
-	value := fmt.Sprint(cookie)
-	for _, element := range value {
-		if test {
-			valueReturned += string(element)
-		}
-		if element == 61 {
-			test = true
-		}
-	}
-	return valueReturned
+	IsNotValid bool
 }
 
 func Home(w http.ResponseWriter, r *http.Request) {
 	t := template.Must(template.ParseFiles("./front/html/home.html", "./front/html/navBar.html"))
 	structDisplayHome := structDisplayHome{}
+	email := r.FormValue("userInput")
+	userPassword := r.FormValue("userPassword")
+	if email != "" && userPassword != "" {
+		ifUserExist, idUser := datamanagement.IsRegister(email, userPassword)
+		if ifUserExist {
+			cookieIdUser := http.Cookie{Name: "idUser", Value: idUser, Expires: time.Now().Add(1 / 2 * time.Hour)}
+			http.SetCookie(w, &cookieIdUser)
+			cookieIsConnected := http.Cookie{Name: "isConnected", Value: "true", Expires: time.Now().Add(1 / 2 * time.Hour)}
+			http.SetCookie(w, &cookieIsConnected)
+		}
+	}
 	cookieConnected, _ := r.Cookie("isConnected")
-	IsConnected := getCookieValue(cookieConnected)
+	IsConnected := datamanagement.GetCookieValue(cookieConnected)
 	if IsConnected == "true" {
-		structDisplayHome.IsConnected = true
+		structDisplayHome.IsNotValid = true
 	} else {
-		structDisplayHome.IsConnected = false
+		structDisplayHome.IsNotValid = false
 	}
 	t.ExecuteTemplate(w, "home", structDisplayHome)
 }
