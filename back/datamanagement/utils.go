@@ -7,7 +7,7 @@ import (
 )
 
 func SelectDB(query string, args ...interface{}) *sql.Rows {
-	db, err := sql.Open("sqlite3", "./DB-Forum.db")
+	db, err := sql.Open("sqlite3", "./database/décantez-vous.db")
 	if err != nil {
 		fmt.Println(err)
 		return nil
