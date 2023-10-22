@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background-color: #eff9fd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/* ------ Navbar ------ */
+
+nav {
+  position: sticky;
+  margin-top: 20px;
+  height: 150px;
+  width: 1880px;
+  background-color: #36506c;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px #000000;
+}
+
+nav .logo {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+}
+
+nav .btnNav {
+  height: 50px;
+  width: 150px;
+  background-color: #eff9fd;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #36506c;
+  font-weight: bold;
+  font-size: 20px;
+  box-shadow: 0px 0px 2px #36506c;
+}
+
+/* ------ Main ------ */
+
+.store {
+  margin-top: 20px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 160px;
+}
+
+.cardImgStore {
+  height: 400px;
+  width: 970px;
+  background-color: #36506c;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 2px #000000;
+}
+
+.cardImgStore .imgInterior {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 380px;
+  width: 480px;
+  border-radius: 5px;
+}
+
+.cardImgStore .imgExt {
+  height: 95%;
+  width: 100%;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.cardImgStore .imgInt {
+  height: 50%;
+}
+
+.cardOfstore {
+  height: 380px;
+  width: 430px;
+  background-color: #eff9fd;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: #36506c 10px solid;
+  box-shadow: 0px 0px 2px #000000;
+}
+
+.employee {
+  margin-top: 50px;
+  display: grid;
+  gap: 50px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.employee .cardOfEmployee {
+  height: 580px;
+  width: 480px;
+  background-color: #eff9fd;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  border: #36506c 10px solid;
+  box-shadow: 0px 0px 2px #000000;
+}
+
+.employee .cardOfEmployee .imgOfEmployee {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  margin: 30px;
+}
+
+/* ------ Footer ------ */
+
+footer {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  height: 100px;
+  width: 1880px;
+  background-color: #36506c;
+  color: #eff9fd;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px #000000;
+}
