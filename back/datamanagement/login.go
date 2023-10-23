@@ -3,6 +3,8 @@ package datamanagement
 import (
 	"crypto/sha256"
 	"fmt"
+
+	_ "github.com/mattn/go-sqlite3"
 )
 
 func IsRegister(userInput string, password string) (bool, string) {

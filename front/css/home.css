@@ -1,0 +1,71 @@
+body {
+    background-color: rgb(236,247,253);
+    display: flex;
+    justify-content: space-around;
+}
+
+.logo {
+    height: 20vw;
+    width: 35vw;   
+}
+
+.box_form {
+    font-size: 1.5vw;
+    color: #EFF9FD;
+    background-color: #36506C;  
+    padding-top : 1vw;
+    padding-bottom : 1vw;
+    margin-bottom: 2vw;
+    border-radius: 8px;
+}
+
+.display_flex{
+    display: flex;
+    justify-content: center;
+}
+
+.box_Email_input{
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5vw;
+    margin-bottom: 0.5vw;
+    width: 100%;
+
+}
+
+.Email_input {
+    height: 2vw;
+    width: 80%;
+    border-radius: 5px;
+}
+
+.box_password_input{
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5vw;
+    margin-bottom: 0.5vw;
+    width: 100%;
+}
+
+.password_input {
+    height: 2vw;
+    width: 80%;
+    border-radius: 5px;
+}
+
+.box_connect_me {
+    display: flex;
+    justify-content: space-around;
+}
+
+.connect_me_input {
+    background-color: #EFF9FD;
+    color:#36506C;
+    font-size: 1.5vw;
+    width: 100%;
+    border-radius: 5px;
+    padding-top: 0.6vw;
+    padding-bottom: 0.6vw;
+    cursor: pointer;
+    border-color: #36506C;
+}
