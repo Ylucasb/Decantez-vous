@@ -15,13 +15,11 @@ func SelectDB(query string, args ...interface{}) *sql.Rows {
 		return nil
 	}
 	defer db.Close()
-
 	rows, err := db.Query(query, args...)
 	if err != nil {
 		fmt.Println(err)
 		return nil
 	}
-
 	return rows
 }
 
