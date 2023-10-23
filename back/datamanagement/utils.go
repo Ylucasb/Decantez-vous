@@ -4,6 +4,8 @@ import (
 	"database/sql"
 	"fmt"
 	"net/http"
+
+	_ "github.com/mattn/go-sqlite3"
 )
 
 func SelectDB(query string, args ...interface{}) *sql.Rows {

@@ -24,6 +24,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 			http.SetCookie(w, &cookieIdUser)
 			cookieIsConnected := http.Cookie{Name: "isConnected", Value: "true", Expires: time.Now().Add(1 / 2 * time.Hour)}
 			http.SetCookie(w, &cookieIsConnected)
+			http.Redirect(w, r, "/acceuil", http.StatusSeeOther)
 		} else {
 			http.Redirect(w, r, "/home", http.StatusSeeOther)
 		}
