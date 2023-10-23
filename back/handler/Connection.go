@@ -21,11 +21,9 @@ func Connection(w http.ResponseWriter, r *http.Request) {
 	if email != "" && userPassword != "" {
 		ifUserExist, idUser := datamanagement.IsRegister(email, userPassword)
 		if ifUserExist {
-			// cookieIdUser := http.Cookie{Name: "idUser", Value: idUser, Expires: time.Now().Add(1 / 2 * time.Hour)}
 			cookieIdUser := http.Cookie{Name: "idUser", Value: idUser, Expires: time.Now().Add(30 * time.Minute)}
 			http.SetCookie(w, &cookieIdUser)
 			cookieIsConnected := http.Cookie{Name: "isConnected", Value: "true", Expires: time.Now().Add(30 * time.Minute)}
-			// cookieIsConnected := http.Cookie{Name: "isConnected", Value: "true", Expires: time.Now().Add(1 / 2 * time.Hour)}
 			http.SetCookie(w, &cookieIsConnected)
 			http.Redirect(w, r, "/acceuil", http.StatusSeeOther)
 		} else {
