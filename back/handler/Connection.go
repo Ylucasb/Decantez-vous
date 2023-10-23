@@ -25,7 +25,7 @@ func Connection(w http.ResponseWriter, r *http.Request) {
 			http.SetCookie(w, &cookieIdUser)
 			cookieIsConnected := http.Cookie{Name: "isConnected", Value: "true", Expires: time.Now().Add(30 * time.Minute)}
 			http.SetCookie(w, &cookieIsConnected)
-			http.Redirect(w, r, "/acceuil", http.StatusSeeOther)
+			http.Redirect(w, r, "/Sites", http.StatusSeeOther)
 		} else {
 			structDisplayHome.IsNotValid = true
 		}
