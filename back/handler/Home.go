@@ -24,16 +24,17 @@ func Home(w http.ResponseWriter, r *http.Request) {
 			http.SetCookie(w, &cookieIdUser)
 			cookieIsConnected := http.Cookie{Name: "isConnected", Value: "true", Expires: time.Now().Add(1 / 2 * time.Hour)}
 			http.SetCookie(w, &cookieIsConnected)
+			// ca c'est moi
 			http.Redirect(w, r, "/acceuil", http.StatusSeeOther)
 		} else {
 			http.Redirect(w, r, "/home", http.StatusSeeOther)
 		}
+		// ca c'est moi
 	}
 	cookieConnected, _ := r.Cookie("isConnected")
 	IsConnected := datamanagement.GetCookieValue(cookieConnected)
 	if IsConnected == "true" {
 		structDisplayHome.IsNotValid = true
-		// http.Redirect(w, r, "/acceuil", http.StatusSeeOther)
 	} else {
 		structDisplayHome.IsNotValid = false
 

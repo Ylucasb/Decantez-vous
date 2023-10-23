@@ -16,7 +16,6 @@ func IsRegister(userInput string, password string) (bool, string) {
 	for rows.Next() {
 		var id string
 		rows.Scan(&id)
-		print("true")
 		return true, id
 	}
 	return false, ""
