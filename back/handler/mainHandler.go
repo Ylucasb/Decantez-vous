@@ -13,10 +13,9 @@ func MainHandler(w http.ResponseWriter, r *http.Request) {
 		Connection(w, r)
 	case url[1] == "Sites" && len(url) == 2 && datamanagement.TestIsRegister(r):
 		Sites(w, r)
-	default:
-		if len(url) >= 3 {
-			http.Redirect(w, r, "http://localhost:8080/InvalidPath", http.StatusSeeOther)
-		}
+	case url[1] == "InvalidPath" && len(url) == 2:
 		InvalidPath(w, r)
+	default:
+		http.Redirect(w, r, "http://localhost:8080/InvalidPath", http.StatusSeeOther)
 	}
 }

@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"decantez-vous/back/datamanagement"
 	"html/template"
 	"log"
 	"net/http"
@@ -9,14 +10,13 @@ import (
 )
 
 type structDisplaySites struct {
-	IsNotValid bool
+	Employee []datamanagement.EmployeeFromDb
 }
 
 func Sites(w http.ResponseWriter, r *http.Request) {
 	t := template.Must(template.ParseFiles("./front/html/sites.html"))
 
-	structDisplaySites := structDisplaySites{}
-	// allEmployees := datamanagement.RecuperationEmployee()
+	structDisplaySites := structDisplaySites{datamanagement.RecuperationEmployee()}
 	// allWorplace := datamanagement.RecuperationWorkplace()
 	// site := r.FormValue("selectWorkplace")
 

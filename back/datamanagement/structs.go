@@ -1,6 +1,8 @@
 package datamanagement
 
-type employeeFromDb struct {
+import "time"
+
+type EmployeeFromDb struct {
 	IdEmployee   int
 	IdWorkplace  int
 	IdRelation   int
@@ -10,10 +12,12 @@ type employeeFromDb struct {
 	Phone        string
 	Mail         string
 	Password     string
-	BirthDate    string
-	HireDate     string
+	BirthDate    time.Time
+	HireDate     time.Time
 	IBAN         string
 	IsWorking    bool
+	IsPays       bool
+	Job          string
 }
 
 type workplaceFromDb struct {
@@ -24,7 +28,7 @@ type workplaceFromDb struct {
 
 type sitesPageStruct struct {
 	Workplace []workplaceFromDb
-	Employee  []employeeFromDb
+	Employee  []EmployeeFromDb
 	// NbrPost     int
 	IsConnected bool
 }

@@ -23,7 +23,6 @@
       </form>
 
       <img class="logo" src="../img/logo2.png" alt="" />
-
       <a class="btnNav" href="">Producteurs</a>
     </nav>
     <main>
@@ -50,12 +49,15 @@
       <section class="employee">
         <section class="cardOfEmployee">
           <img class="imgOfEmployee" src="../img/logo2.png" alt="" />
+          <h1>{{$instance.Job}}</h1>
           <h2>{{ $instance.LastName }} {{ $instance.FirstName }}</h2>
           <p>Numéro de téléphone : {{ $instance.Phone }}</p>
           <p>Adresse mail : {{ $instance.Mail }}</p>
           <p>Anniversaire: {{ $instance.BirthDate }}</p>
           <p>Date d'embauche: {{ $instance.HireDate }}</p>
-          <p>IBAN if RH: {{ $instance.IBAN }}</p>
+          {{ if $instance.IsPays}}
+            <p>{{$instance.IBAN }}</p>
+          {{end}}
         </section>
         {{ end }}
         <section class="cardOfEmployee">
