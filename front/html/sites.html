@@ -8,14 +8,19 @@
   </head>
   <body>
     <nav>
-      <select class="btnNav" name="Sites" id="btnSitesNav">
-        <option value="Paris">Paris</option>
-        <option value="Site2">Site 2</option>
-        <option value="Site3">Site 3</option>
-        <option value="Site1">Site 4</option>
-        <option value="Site2">Site 5</option>
-        <option value="Site3">Site 6</option>
-      </select>
+      <form action="" method="post">
+        <button type="submit">
+          <select class="btnNav" name="Sites" id="btnSitesNav">
+            <option value="Paris">Paris</option>
+            <option value="Lyon">Site 2</option>
+            <option value="Site3">Site 3</option>
+            <option value="Site1">Site 4</option>
+            <option value="Site2">Site 5</option>
+            <option value="Site3">Site 6</option>
+          </select>
+          <input type="hidden" value="selectWorkplace" />
+        </button>
+      </form>
 
       <img class="logo" src="../img/logo2.png" alt="" />
 
@@ -41,18 +46,20 @@
         </section>
       </section>
 
+      {{ range $index, $instance := .Employee }}
       <section class="employee">
         <section class="cardOfEmployee">
           <img class="imgOfEmployee" src="../img/logo2.png" alt="" />
-          <h2>Employé 1</h2>
-          <p>Nom : Dupont</p>
-          <p>Prénom : Jean</p>
-          <p>Numéro de téléphone : 01 23 45 67 89</p>
-          <p>Adresse mail :</p>
-          <p>Anniv</p>
-          <p>Date d'embauche</p>
-          <p>IBAN if RH</p>
+          <h2>{{ $instance.LastName }} {{ $instance.FirstName }}</h2>
+          <!-- <p>Nom : Dupont</p>
+          <p>Prénom : Jean</p> -->
+          <p>Numéro de téléphone : {{ $instance.Phone }}</p>
+          <p>Adresse mail : {{ $instance.Mail }}</p>
+          <p>Anniversaire: {{ $instance.BirthDate }}</p>
+          <p>Date d'embauche: {{ $instance.HireDate }}</p>
+          <p>IBAN if RH: {{ $instance.IBAN }}</p>
         </section>
+        {{ end }}
         <section class="cardOfEmployee">
           <img class="imgOfEmployee" src="../img/logo2.png" alt="" />
           <h2>Employé 1</h2>
