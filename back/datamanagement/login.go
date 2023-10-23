@@ -3,6 +3,7 @@ package datamanagement
 import (
 	"crypto/sha256"
 	"fmt"
+	"net/http"
 
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -19,4 +20,14 @@ func IsRegister(userInput string, password string) (bool, string) {
 		return true, id
 	}
 	return false, ""
+}
+
+func TestIsRegister(r *http.Request) bool {
+	cookieConnected, _ := r.Cookie("isConnected")
+	IsConnected := GetCookieValue(cookieConnected)
+	if IsConnected == "true" {
+		return true
+	} else {
+		return false
+	}
 }
