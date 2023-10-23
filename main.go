@@ -12,9 +12,7 @@ var port = ":8080"
 
 func main() {
 	//handlers
-	http.HandleFunc("/", handler.Home)
-	http.HandleFunc("/acceuil", handler.Acceuil)
-	http.HandleFunc("/sites", handler.Sites)
+	http.HandleFunc("/", handler.MainHandler)
 	http.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("front/css"))))
 	http.Handle("/fonts/", http.StripPrefix("/fonts/", http.FileServer(http.Dir("front/fonts"))))
 	http.Handle("/img/", http.StripPrefix("/img/", http.FileServer(http.Dir("front/img"))))

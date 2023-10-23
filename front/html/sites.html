@@ -8,7 +8,7 @@
   </head>
   <body>
     <nav>
-      <form action="" method="post">
+      <form method="post">
         <button type="submit">
           <select class="btnNav" name="Sites" id="btnSitesNav">
             <option value="Paris">Paris</option>
@@ -51,8 +51,6 @@
         <section class="cardOfEmployee">
           <img class="imgOfEmployee" src="../img/logo2.png" alt="" />
           <h2>{{ $instance.LastName }} {{ $instance.FirstName }}</h2>
-          <!-- <p>Nom : Dupont</p>
-          <p>Prénom : Jean</p> -->
           <p>Numéro de téléphone : {{ $instance.Phone }}</p>
           <p>Adresse mail : {{ $instance.Mail }}</p>
           <p>Anniversaire: {{ $instance.BirthDate }}</p>
