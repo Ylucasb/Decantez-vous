@@ -11,7 +11,7 @@ func MainHandler(w http.ResponseWriter, r *http.Request) {
 	switch true {
 	case url[1] == "" && len(url) == 2:
 		Connection(w, r)
-	case url[1] == "Sites" && len(url) == 2 && datamanagement.TestIsRegister(r):
+	case url[1] == "Sites" && len(url) == 2 && datamanagement.TestIsConnected(r):
 		Sites(w, r)
 	case url[1] == "InvalidPath" && len(url) == 2:
 		InvalidPath(w, r)
