@@ -20,10 +20,11 @@ func IsRegister(userInput string, password string) (bool, int, bool) {
 	for rows.Next() {
 		var idE int
 		var idP int
-		rows.Scan(&idE)
+		rows.Scan(&idE, &idP)
 		isExist = true
 		id = idE
 		if idP < 3 {
+			fmt.Println(idP)
 			isPays = true
 		}
 	}

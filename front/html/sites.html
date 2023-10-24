@@ -4,23 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/sites.css" />
-    <title>Décantez-vou</title>
+    <title>Décantez-vous</title>
   </head>
   <body>
     <nav>
+
       <form method="post">
-        <button type="submit">
-          <select class="btnNav" name="Sites" id="btnSitesNav">
+        <div >
+          <select class="btnNav" id="btnSitesNav" name="selectWorkplace">
             <option value="Paris">Paris</option>
-            <option value="Lyon">Site 2</option>
-            <option value="Site3">Site 3</option>
-            <option value="Site1">Site 4</option>
-            <option value="Site2">Site 5</option>
-            <option value="Site3">Site 6</option>
+            <option value="Nantes">Nantes</option>
+            <option value="Marseille">Marseille</option>
+            <option value="Lille">Lille</option>
+            <option value="Bordeaux">Bordeaux</option>
+            <option value="Strasbourg">Strasbourg</option>
+            <option value="Lyon">Lyon</option>
           </select>
-          <input type="hidden" value="selectWorkplace" />
-        </button>
+
+          <button  name="selectWorkplace" type="submit">changer de site</button>
+        </div>
       </form>
+      <!-- <form method="POST">
+            <select class="btnNav" id="btnSitesNav">
+              <option value="Paris">Paris</option>
+              <option value="Lyon">Site 2</option>
+              <option value="Site3">Site 3</option>
+              <option value="Site1">Site 4</option>
+              <option value="Site2">Site 5</option>
+              <option value="Site3">Site 6</option>
+            </select>
+            <input type="submit" name="selectWorkplace"/>
+          <input type="hidden" value="selectWorkplace" />
+      </form> -->
 
       <img class="logo" src="../img/logo2.png" alt="" />
       <a class="btnNav" href="">Producteurs</a>
@@ -60,39 +75,6 @@
           {{end}}
         </section>
         {{ end }}
-        <section class="cardOfEmployee">
-          <img class="imgOfEmployee" src="../img/logo2.png" alt="" />
-          <h2>Employé 1</h2>
-          <p>Nom : Dupont</p>
-          <p>Prénom : Jean</p>
-          <p>Numéro de téléphone : 01 23 45 67 89</p>
-          <p>Adresse mail :</p>
-          <p>Anniv</p>
-          <p>Date d'embauche</p>
-          <p>IBAN if RH</p>
-        </section>
-        <section class="cardOfEmployee">
-          <img class="imgOfEmployee" src="../img/logo2.png" alt="" />
-          <h2>Employé 1</h2>
-          <p>Nom : Dupont</p>
-          <p>Prénom : Jean</p>
-          <p>Numéro de téléphone : 01 23 45 67 89</p>
-          <p>Adresse mail :</p>
-          <p>Anniv</p>
-          <p>Date d'embauche</p>
-          <p>IBAN if RH</p>
-        </section>
-        <section class="cardOfEmployee">
-          <img class="imgOfEmployee" src="../img/logo2.png" alt="" />
-          <h2>Employé 1</h2>
-          <p>Nom : Dupont</p>
-          <p>Prénom : Jean</p>
-          <p>Numéro de téléphone : 01 23 45 67 89</p>
-          <p>Adresse mail :</p>
-          <p>Anniv</p>
-          <p>Date d'embauche</p>
-          <p>IBAN if RH</p>
-        </section>
       </section>
     </main>
     <footer>
