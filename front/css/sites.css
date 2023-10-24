@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background-color: #eff9fd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/* ------ Navbar ------ */
+
+nav {
+  position: sticky;
+  margin-top: 1vw;
+  height: 7.813vw;
+  width: 97.917vw;
+  background-color: #36506c;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px #000000;
+}
+
+nav .logo {
+  height: 6.25vw;
+  width: 6.25vw;
+  border-radius: 50%;
+}
+
+nav .btnNav {
+  height: 2.604vw;
+  width: 7.813vw;
+  background-color: #eff9fd;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #36506c;
+  font-weight: bold;
+  font-size: 20px;
+  box-shadow: 0px 0px 2px #36506c;
+}
+
+/* ------ Main ------ */
+
+.store {
+  margin-top: 1vw;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 8.333vw;
+}
+
+.cardImgStore {
+  height: 20.833vw;
+  width: 50.521vw;
+  background-color: #36506c;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 2px #000000;
+}
+
+.cardImgStore .imgInterior {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 19.792vw;
+  width: 25vw;
+  border-radius: 5px;
+}
+
+.cardImgStore .imgExt {
+  height: 95%;
+  width: 100%;
+  margin: 0.521vw;
+  border-radius: 5px;
+}
+
+.cardImgStore .imgInt {
+  height: 50%;
+}
+
+.cardOfstore {
+  height: 19.792vw;
+  width: 22.396vw;
+  background-color: #eff9fd;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.521vw;
+  border: #36506c 0.521vw solid;
+  box-shadow: 0px 0px 2px #000000;
+}
+
+.employee {
+  margin-top: 2.604vw;
+  display: grid;
+  gap: 2.604vw;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.employee .cardOfEmployee {
+  height: 30.208vw;
+  width: 25vw;
+  background-color: #eff9fd;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.521vw;
+  border: #36506c 0.521vw solid;
+  box-shadow: 0px 0px 2px #000000;
+}
+
+.employee .cardOfEmployee .imgOfEmployee {
+  height: 7.813vw;
+  width: 7.813vw;
+  border-radius: 50%;
+  margin: 1.563vw;
+}
+
+/* ------ Footer ------ */
+
+footer {
+  margin-top: 2.604vw;
+  margin-bottom: 1.042vw;
+  height: 5.208vw;
+  width: 97.917vw;
+  background-color: #36506c;
+  color: #eff9fd;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px #000000;
+}
