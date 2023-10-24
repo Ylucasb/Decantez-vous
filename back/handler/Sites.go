@@ -11,18 +11,26 @@ import (
 
 type structDisplaySites struct {
 	Employee []datamanagement.EmployeeFromDb
+	IsPays   bool
 }
 
 func Sites(w http.ResponseWriter, r *http.Request) {
 	t := template.Must(template.ParseFiles("./front/html/sites.html"))
 	workplace := r.FormValue("selectWorkplace")
-	print(workplace)
-
-	// structDisplaySites := structDisplaySites{datamanagement.RecuperationEmployee()}
-
-	structDisplaySites := structDisplaySites{datamanagement.RecuperationEmployeeWorkplace(workplace)}
-	// allWorplace := datamanagement.RecuperationWorkplace()
-
+	cookieIsPays, _ := r.Cookie("isPays")
+	isPays := datamanagement.GetCookieValue(cookieIsPays)
+	var isPaysBool bool
+	if isPays == "true" {
+		isPaysBool = true
+	} else {
+		isPaysBool = false
+	}
+	structDisplaySites := structDisplaySites{datamanagement.RecuperationEmployeeWorkplace(workplace), isPaysBool}
+	if isPaysBool {
+		for i := 0; i < len(structDisplaySites.Employee); i++ {
+			structDisplaySites.Employee[i].IsPays = isPaysBool
+		}
+	}
 	err := t.Execute(w, structDisplaySites)
 	if err != nil {
 		log.Fatal(err)
