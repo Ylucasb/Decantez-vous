@@ -15,10 +15,13 @@ type structDisplaySites struct {
 
 func Sites(w http.ResponseWriter, r *http.Request) {
 	t := template.Must(template.ParseFiles("./front/html/sites.html"))
+	workplace := r.FormValue("selectWorkplace")
+	print(workplace)
 
-	structDisplaySites := structDisplaySites{datamanagement.RecuperationEmployee()}
+	// structDisplaySites := structDisplaySites{datamanagement.RecuperationEmployee()}
+
+	structDisplaySites := structDisplaySites{datamanagement.RecuperationEmployeeWorkplace(workplace)}
 	// allWorplace := datamanagement.RecuperationWorkplace()
-	// site := r.FormValue("selectWorkplace")
 
 	err := t.Execute(w, structDisplaySites)
 	if err != nil {
