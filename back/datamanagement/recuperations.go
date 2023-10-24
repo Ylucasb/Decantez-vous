@@ -46,9 +46,6 @@ func RecuperationEmployee() []EmployeeFromDb {
 			IsPays:       false,
 			Job:          "",
 		}
-		if employeeStruc.IdProfession < 3 {
-			employeeStruc.IsPays = true
-		}
 		allEmployees = append(allEmployees, employeeStruc)
 	}
 	allEmployees = getJob(allEmployees)
