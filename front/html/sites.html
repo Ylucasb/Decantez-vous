@@ -4,22 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/sites.css" />
-    <title>Décantez-vou</title>
+    <title>Décantez-vous</title>
   </head>
   <body>
     <nav>
       <form method="post">
-        <button type="submit">
-          <select class="btnNav" name="Sites" id="btnSitesNav">
+        <div class="btnNav">
+          <select class="btnSelect" id="btnSitesNav" name="selectWorkplace">
+            <option disabled selected>Sites</option>
             <option value="Paris">Paris</option>
-            <option value="Lyon">Site 2</option>
-            <option value="Site3">Site 3</option>
-            <option value="Site1">Site 4</option>
-            <option value="Site2">Site 5</option>
-            <option value="Site3">Site 6</option>
+            <option value="Nantes">Nantes</option>
+            <option value="Marseille">Marseille</option>
+            <option value="Lille">Lille</option>
+            <option value="Bordeaux">Bordeaux</option>
+            <option value="Strasbourg">Strasbourg</option>
+            <option value="Lyon">Lyon</option>
           </select>
-          <input type="hidden" value="selectWorkplace" />
-        </button>
+
+          <button class="btnConfirm" name="selectWorkplace" type="submit">
+            <!-- <i class="bx bx-check-square"></i> -->
+            V
+          </button>
+        </div>
       </form>
 
       <img class="logo" src="../img/logo2.png" alt="" />
@@ -28,11 +34,8 @@
     <main>
       <section class="store">
         <section class="cardImgStore">
-          <img class="imgExt" src="../img/logo.png" alt="" />
-          <section class="imgInterior">
-            <img class="imgInt" src="../img/logo2.png" alt="" />
-            <img class="imgInt" src="../img/logo2.png" alt="" />
-          </section>
+          <img class="imgExt" src="../img/Décantez-vous-store.png" alt="" />
+          <img class="imgInt" src="../img/Décantez-vous-inté.png" alt="" />
         </section>
         <section class="cardOfstore">
           <h2>Magasin 1</h2>
@@ -41,58 +44,25 @@
           <p>Ville : Paris</p>
           <p>Horaires : 9h-18h</p>
           <p>Numéro de téléphone : 01 23 45 67 89</p>
-          <p>Adresse mail :</p>
+          <p>Adresse mail : @gmail</p>
         </section>
       </section>
 
-      {{ range $index, $instance := .Employee }}
       <section class="employee">
+        {{ range $index, $instance := .Employee }}
         <section class="cardOfEmployee">
           <img class="imgOfEmployee" src="../img/logo2.png" alt="" />
-          <h1>{{$instance.Job}}</h1>
           <h2>{{ $instance.LastName }} {{ $instance.FirstName }}</h2>
+          <h3>{{$instance.Job}}</h3>
           <p>Numéro de téléphone : {{ $instance.Phone }}</p>
           <p>Adresse mail : {{ $instance.Mail }}</p>
-          <p>Anniversaire: {{ $instance.BirthDate }}</p>
-          <p>Date d'embauche: {{ $instance.HireDate }}</p>
+          <p>Date de naissance : {{ $instance.BirthDate }}</p>
+          <p>Date d'embauche : {{ $instance.HireDate }}</p>
           {{ if $instance.IsPays}}
-            <p>{{$instance.IBAN }}</p>
+          <p>IBAN : {{$instance.IBAN }}</p>
           {{end}}
         </section>
         {{ end }}
-        <section class="cardOfEmployee">
-          <img class="imgOfEmployee" src="../img/logo2.png" alt="" />
-          <h2>Employé 1</h2>
-          <p>Nom : Dupont</p>
-          <p>Prénom : Jean</p>
-          <p>Numéro de téléphone : 01 23 45 67 89</p>
-          <p>Adresse mail :</p>
-          <p>Anniv</p>
-          <p>Date d'embauche</p>
-          <p>IBAN if RH</p>
-        </section>
-        <section class="cardOfEmployee">
-          <img class="imgOfEmployee" src="../img/logo2.png" alt="" />
-          <h2>Employé 1</h2>
-          <p>Nom : Dupont</p>
-          <p>Prénom : Jean</p>
-          <p>Numéro de téléphone : 01 23 45 67 89</p>
-          <p>Adresse mail :</p>
-          <p>Anniv</p>
-          <p>Date d'embauche</p>
-          <p>IBAN if RH</p>
-        </section>
-        <section class="cardOfEmployee">
-          <img class="imgOfEmployee" src="../img/logo2.png" alt="" />
-          <h2>Employé 1</h2>
-          <p>Nom : Dupont</p>
-          <p>Prénom : Jean</p>
-          <p>Numéro de téléphone : 01 23 45 67 89</p>
-          <p>Adresse mail :</p>
-          <p>Anniv</p>
-          <p>Date d'embauche</p>
-          <p>IBAN if RH</p>
-        </section>
       </section>
     </main>
     <footer>
