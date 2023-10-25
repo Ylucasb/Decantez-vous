@@ -14,9 +14,8 @@ type structDisplaySites struct {
 	IsPays   bool
 }
 
-func Sites(w http.ResponseWriter, r *http.Request) {
+func Sites(w http.ResponseWriter, r *http.Request, adress string) {
 	t := template.Must(template.ParseFiles("./front/html/sites.html"))
-	workplace := r.FormValue("selectWorkplace")
 	cookieIsPays, _ := r.Cookie("isPays")
 	isPays := datamanagement.GetCookieValue(cookieIsPays)
 	var isPaysBool bool
@@ -25,7 +24,7 @@ func Sites(w http.ResponseWriter, r *http.Request) {
 	} else {
 		isPaysBool = false
 	}
-	structDisplaySites := structDisplaySites{datamanagement.RecuperationEmployeeWorkplace(workplace), isPaysBool}
+	structDisplaySites := structDisplaySites{datamanagement.RecuperationEmployeeWorkplace(adress), isPaysBool}
 	if isPaysBool {
 		for i := 0; i < len(structDisplaySites.Employee); i++ {
 			structDisplaySites.Employee[i].IsPays = isPaysBool

@@ -1,5 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+  <script>
+    function changerPage(selectElement) {
+        var selectedValue = selectElement.value;
+        if (selectedValue) {
+            window.location = selectedValue;
+        }
+    }
+  </script>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,26 +16,18 @@
   </head>
   <body>
     <nav>
-      <form method="post">
-        <div class="btnNav">
-          <select class="btnSelect" id="btnSitesNav" name="selectWorkplace">
-            <option disabled selected>Sites</option>
-            <option value="Paris">Paris</option>
-            <option value="Nantes">Nantes</option>
-            <option value="Marseille">Marseille</option>
-            <option value="Lille">Lille</option>
-            <option value="Bordeaux">Bordeaux</option>
-            <option value="Strasbourg">Strasbourg</option>
-            <option value="Lyon">Lyon</option>
-          </select>
-
-          <button class="btnConfirm" name="selectWorkplace" type="submit">
-            <!-- <i class="bx bx-check-square"></i> -->
-            V
-          </button>
-        </div>
-      </form>
-
+      <div class="btnNav">
+        <select class="btnSelect" id="btnSitesNav" onchange="changerPage(this)">
+          <option disabled selected>Sites</option>
+          <option value="http://localhost:8080/Sites/Paris">Paris</option>
+          <option value="http://localhost:8080/Sites/Nantes">Nantes</option>
+          <option value="http://localhost:8080/Sites/Marseille">Marseille</option>
+          <option value="http://localhost:8080/Sites/Lille">Lille</option>
+          <option value="http://localhost:8080/Sites/Bordeaux">Bordeaux</option>
+          <option value="http://localhost:8080/Sites/Strasbourg">Strasbourg</option>
+          <option value="http://localhost:8080/Sites/Lyon">Lyon</option>
+        </select>
+      </div>
       <img class="logo" src="../img/logo2.png" alt="" />
       <a class="btnNav" href="">Producteurs</a>
     </nav>
