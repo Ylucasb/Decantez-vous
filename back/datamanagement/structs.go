@@ -17,12 +17,19 @@ type EmployeeFromDb struct {
 	IsPays       bool
 	Job          string
 }
-type supplierFromDb struct {
+
+type SupplierFromDb struct {
 	IdSupplier int
-	IdProduct  int
+	Product    string
 	FirstName  string
 	LastName   string
 	Adress     string
 	Phone      string
 	Mail       string
+	Workplace  []string
+}
+
+type SupplierWorkplaceFromDb struct {
+	Workplace  string
+	IdSupplier int
 }
