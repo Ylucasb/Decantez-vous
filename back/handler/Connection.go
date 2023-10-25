@@ -13,6 +13,15 @@ type structDisplayHome struct {
 	IsNotValid bool
 }
 
+func getWorkPlace(idUser int) string {
+	rows := datamanagement.SelectDB("SELECT workplace.adress FROM workplace JOIN employee ON workplace.idWorkplace = employee.idWorkplace WHERE employee.idEmployee=?", int(idUser))
+	var adress string
+	for rows.Next() {
+		rows.Scan(&adress)
+	}
+	return adress
+}
+
 func Connection(w http.ResponseWriter, r *http.Request) {
 	t := template.Must(template.ParseFiles("./front/html/home.html"))
 	structDisplayHome := structDisplayHome{}
@@ -28,7 +37,7 @@ func Connection(w http.ResponseWriter, r *http.Request) {
 			http.SetCookie(w, &cookieIsConnected)
 			cookieIsPays := http.Cookie{Name: "isPays", Value: strconv.FormatBool(isPays), Expires: time.Now().Add(30 * time.Minute)}
 			http.SetCookie(w, &cookieIsPays)
-			http.Redirect(w, r, "/Sites", http.StatusSeeOther)
+			http.Redirect(w, r, "/Sites/"+getWorkPlace(idUser), http.StatusSeeOther)
 		} else {
 			structDisplayHome.IsNotValid = true
 		}
