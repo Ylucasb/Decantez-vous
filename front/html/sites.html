@@ -37,15 +37,17 @@
           <img class="imgExt" src="../img/Décantez-vous-store.png" alt="" />
           <img class="imgInt" src="../img/Décantez-vous-inté.png" alt="" />
         </section>
+        {{ range $index, $instance := .Workplace }}
         <section class="cardOfstore">
-          <h2>Magasin 1</h2>
-          <p>Adresse : 1 rue de la paix</p>
-          <p>Code postal : 75000</p>
-          <p>Ville : Paris</p>
+          <h2>Décantez-vous {{ $instance.Name }}</h2>
+          <h3>{{ $instance.Type }}</h3>
+          <p>Adresse : {{ $instance.Adress }}</p>
+          <p>Ville : {{ $instance.Name }}</p>
           <p>Horaires : 9h-18h</p>
-          <p>Numéro de téléphone : 01 23 45 67 89</p>
-          <p>Adresse mail : @gmail</p>
+          <p>Numéro de téléphone : {{ $instance.Phone }}</p>
+          <p>Adresse mail : {{ $instance.Mail }}</p>
         </section>
+        {{ end }}
       </section>
 
       <section class="employee">

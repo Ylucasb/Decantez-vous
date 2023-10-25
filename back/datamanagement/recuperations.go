@@ -28,7 +28,7 @@ func getJob(allEmployees []EmployeeFromDb) []EmployeeFromDb {
 
 func RecuperationEmployeeWorkplace(workplace string) []EmployeeFromDb {
 	var allEmployees []EmployeeFromDb
-	rows := SelectDB("SELECT * FROM employee INNER JOIN workplace ON workplace.idWorkplace = employee.idWorkplace WHERE workplace.adress = ?", workplace)
+	rows := SelectDB("SELECT * FROM employee INNER JOIN workplace ON workplace.idWorkplace = employee.idWorkplace WHERE workplace.name = ?", workplace)
 	defer rows.Close()
 	for rows.Next() {
 		var idEmployee int
@@ -72,4 +72,32 @@ func RecuperationEmployeeWorkplace(workplace string) []EmployeeFromDb {
 	}
 	allEmployees = getJob(allEmployees)
 	return allEmployees
+}
+
+func RecuperationWorkplace(workplaceAdress string) []WorkplaceFromDb {
+	var workplace []WorkplaceFromDb
+	rows := SelectDB("SELECT * FROM workplace WHERE workplace.name = ?", workplaceAdress)
+	defer rows.Close()
+	for rows.Next() {
+		var idWorkplace int
+		var name string
+		var adress string
+		var phone string
+		var mail string
+		var typeWorkplace string
+		err := rows.Scan(&idWorkplace, &name, &adress, &phone, &mail, &typeWorkplace)
+		if err != nil {
+			log.Fatal(err)
+		}
+		workplaceStruc := WorkplaceFromDb{
+			IdWorkplace: idWorkplace,
+			Name:        name,
+			Adress:      adress,
+			Phone:       phone,
+			Mail:        mail,
+			Type:        typeWorkplace,
+		}
+		workplace = append(workplace, workplaceStruc)
+	}
+	return workplace
 }

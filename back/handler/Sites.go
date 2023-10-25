@@ -11,6 +11,7 @@ import (
 
 type structDisplaySites struct {
 	Employee []datamanagement.EmployeeFromDb
+	Workplace []datamanagement.WorkplaceFromDb
 	IsPays   bool
 }
 
@@ -25,7 +26,7 @@ func Sites(w http.ResponseWriter, r *http.Request) {
 	} else {
 		isPaysBool = false
 	}
-	structDisplaySites := structDisplaySites{datamanagement.RecuperationEmployeeWorkplace(workplace), isPaysBool}
+	structDisplaySites := structDisplaySites{datamanagement.RecuperationEmployeeWorkplace(workplace),datamanagement.RecuperationWorkplace(workplace), isPaysBool}
 	if isPaysBool {
 		for i := 0; i < len(structDisplaySites.Employee); i++ {
 			structDisplaySites.Employee[i].IsPays = isPaysBool
