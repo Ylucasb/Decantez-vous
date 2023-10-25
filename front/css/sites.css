@@ -54,7 +54,7 @@ nav .btnNav:hover {
 
 nav .btnNav .btnSelect {
   height: 2.604vw;
-  width: 5.209vw;
+  width: 5.813vw;
   background-color: #eff9fd;
   border-radius: 5px 0 0 5px;
   display: flex;
@@ -68,7 +68,7 @@ nav .btnNav .btnSelect {
 
 nav .btnNav .btnConfirm {
   height: 2.604vw;
-  width: 2.604vw;
+  width: 2vw;
   background-color: #eff9fd;
   border-radius: 0 5px 5px 0;
   display: flex;
