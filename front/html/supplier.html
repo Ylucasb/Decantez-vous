@@ -9,30 +9,34 @@
   <body>
 
     <nav>
+      <a class="btnNav" href="/Sites">Sites</a>
       <img class="logo" src="../img/logo2.png" alt="" />
-      <a class="btnNav" href="">Producteurs</a>
+      <a></a>
     </nav>
 
         
     </main>
+
       <section class="supplier">
         {{ range $index, $instance := .Supplier }}
         <section class="cardOfSupplier">
-          <img class="imgOfSupplier" src="../img/logo2.png" alt="" />
-          <h2>{{ $instance.LastName }} {{ $instance.FirstName }}</h2>
-          <p>Numéro de téléphone : {{ $instance.Phone }}</p>
-          <p>Adresse mail : {{ $instance.Mail }}</p>
-          <p>Produit : {{ $instance.Product }}</p>
-          <p>Adresse : {{ $instance.Adress }}</p>
-          <section>
-            <p>livraison : </p>
-            {{ range $i, $a := $instance.Workplace }}
-            <p>-  {{ . }}</p>
-            {{ end }}
-          </section>
+            <img class="imgOfSupplier" src="../img/logo2.png" alt="" />
+            <h2>{{ $instance.LastName }} {{ $instance.FirstName }}</h2>
+            <p>Numéro de téléphone : {{ $instance.Phone }}</p>
+            <p>Adresse mail : {{ $instance.Mail }}</p>
+            <p>Produit : {{ $instance.Product }}</p>
+            <p>Adresse : {{ $instance.Adress }}</p>
+            <section>
+              <p>livraison : </p>
+              {{ range $i, $a := $instance.Workplace }}
+              <p>-  {{ . }}</p>
+              {{ end }}
+            </section>
+            
         </section>
         {{ end }}
       </section>
+
     </main>
     <footer>
       <h3>@Décantez-vous</h3>

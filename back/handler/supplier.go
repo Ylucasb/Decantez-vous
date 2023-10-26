@@ -15,9 +15,26 @@ type structDisplaySupplier struct {
 
 func Supplier(w http.ResponseWriter, r *http.Request) {
 	t := template.Must(template.ParseFiles("./front/html/supplier.html"))
+	supplierForm := r.FormValue("supplierForm")
+	print(supplierForm)
+
+	cookieIsPays, _ := r.Cookie("isPays")
+	isPays := datamanagement.GetCookieValue(cookieIsPays)
+	var isPaysBool bool
+	if isPays == "true" {
+		isPaysBool = true
+	} else {
+		isPaysBool = false
+	}
 
 	structDisplaySupplier := structDisplaySupplier{datamanagement.RecuperationSupplier()}
 	allSuppliersWorkplace := datamanagement.RecuperationSupplierWorkplace()
+
+	if isPaysBool {
+		for i := 0; i < len(structDisplaySupplier.Supplier); i++ {
+			structDisplaySupplier.Supplier[i].IsPays = isPaysBool
+		}
+	}
 
 	for i := 0; i < len(structDisplaySupplier.Supplier)-1; i++ {
 

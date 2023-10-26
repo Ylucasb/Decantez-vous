@@ -27,6 +27,7 @@ type SupplierFromDb struct {
 	Phone      string
 	Mail       string
 	Workplace  []string
+	IsPays     bool
 }
 
 type SupplierWorkplaceFromDb struct {

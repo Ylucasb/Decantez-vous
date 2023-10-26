@@ -108,7 +108,7 @@ func RecuperationSupplier() []SupplierFromDb {
 
 func RecuperationSupplierWorkplace() []SupplierWorkplaceFromDb {
 	var allSuppliersWorkplace []SupplierWorkplaceFromDb
-	rows := SelectDB("SELECT workplace.adress, idSupplier FROM relationWorkplaceSupplier INNER JOIN workplace ON workplace.idWorkplace = relationWorkplaceSupplier.idWorkplace")
+	rows := SelectDB("SELECT workplace.name, idSupplier FROM relationWorkplaceSupplier INNER JOIN workplace ON workplace.idWorkplace = relationWorkplaceSupplier.idWorkplace")
 	defer rows.Close()
 	for rows.Next() {
 		var workplace string

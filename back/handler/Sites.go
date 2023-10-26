@@ -26,6 +26,7 @@ func Sites(w http.ResponseWriter, r *http.Request) {
 		isPaysBool = false
 	}
 	structDisplaySites := structDisplaySites{datamanagement.RecuperationEmployeeWorkplace(workplace), isPaysBool}
+
 	if isPaysBool {
 		for i := 0; i < len(structDisplaySites.Employee); i++ {
 			structDisplaySites.Employee[i].IsPays = isPaysBool
