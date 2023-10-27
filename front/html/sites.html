@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,26 +8,18 @@
   </head>
   <body>
     <nav>
-      <form method="post">
-        <div class="btnNav">
-          <select class="btnSelect" id="btnSitesNav" name="selectWorkplace">
-            <option disabled selected>Sites</option>
-            <option value="Paris">Paris</option>
-            <option value="Nantes">Nantes</option>
-            <option value="Marseille">Marseille</option>
-            <option value="Lille">Lille</option>
-            <option value="Bordeaux">Bordeaux</option>
-            <option value="Strasbourg">Strasbourg</option>
-            <option value="Lyon">Lyon</option>
-          </select>
-
-          <button class="btnConfirm" name="selectWorkplace" type="submit">
-            <!-- <i class="bx bx-check-square"></i> -->
-            V
-          </button>
-        </div>
-      </form>
-
+      <div class="btnNav">
+        <select class="btnSelect" id="btnSitesNav" onchange="changerPage(this)">
+          <option disabled selected>Sites</option>
+          <option value="http://localhost:8080/Sites/Paris">Paris</option>
+          <option value="http://localhost:8080/Sites/Nantes">Nantes</option>
+          <option value="http://localhost:8080/Sites/Marseille">Marseille</option>
+          <option value="http://localhost:8080/Sites/Lille">Lille</option>
+          <option value="http://localhost:8080/Sites/Bordeaux">Bordeaux</option>
+          <option value="http://localhost:8080/Sites/Strasbourg">Strasbourg</option>
+          <option value="http://localhost:8080/Sites/Lyon">Lyon</option>
+        </select>
+      </div>
       <img class="logo" src="../img/logo2.png" alt="" />
       <a class="btnNav" href="/Supplier">Producteurs</a>
     </nav>
@@ -37,15 +29,17 @@
           <img class="imgExt" src="../img/Décantez-vous-store.png" alt="" />
           <img class="imgInt" src="../img/Décantez-vous-inté.png" alt="" />
         </section>
+        {{ range $index, $instance := .Workplace }}
         <section class="cardOfstore">
-          <h2>Magasin 1</h2>
-          <p>Adresse : 1 rue de la paix</p>
-          <p>Code postal : 75000</p>
-          <p>Ville : Paris</p>
+          <h2>Décantez-vous {{ $instance.Name }}</h2>
+          <h3>{{ $instance.Type }}</h3>
+          <p>Adresse : {{ $instance.Adress }}</p>
+          <p>Ville : {{ $instance.Name }}</p>
           <p>Horaires : 9h-18h</p>
-          <p>Numéro de téléphone : 01 23 45 67 89</p>
-          <p>Adresse mail : @gmail</p>
+          <p>Numéro de téléphone : {{ $instance.Phone }}</p>
+          <p>Adresse mail : {{ $instance.Mail }}</p>
         </section>
+        {{ end }}
       </section>
 
       <section class="employee">
@@ -68,5 +62,13 @@
     <footer>
       <h3>@Décantez-vous</h3>
     </footer>
+    <script>
+      function changerPage(selectElement) {
+          var selectedValue = selectElement.value;
+          if (selectedValue) {
+              window.location = selectedValue;
+          }
+      }
+    </script>
   </body>
 </html>

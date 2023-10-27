@@ -39,3 +39,16 @@ func TestIsConnected(r *http.Request) bool {
 		return false
 	}
 }
+
+func SitesExist(siteName string) bool {
+	rows := SelectDB("SELECT name FROM workplace")
+	defer rows.Close()
+	for rows.Next() {
+		var adress string
+		rows.Scan(&adress)
+		if adress == siteName {
+			return true
+		}
+	}
+	return false
+}

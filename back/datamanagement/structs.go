@@ -18,6 +18,15 @@ type EmployeeFromDb struct {
 	Job          string
 }
 
+type WorkplaceFromDb struct {
+	IdWorkplace int
+	Name        string
+	Adress      string
+	Phone       string
+	Mail        string
+	Type        string
+}
+
 type SupplierFromDb struct {
 	IdSupplier int
 	Product    string
