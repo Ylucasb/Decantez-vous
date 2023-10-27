@@ -98,3 +98,57 @@ func RecuperationWorkplace(workplaceAdress string) []WorkplaceFromDb {
 	}
 	return workplace
 }
+
+func RecuperationSupplier() []SupplierFromDb {
+	var allSuppliers []SupplierFromDb
+	rows := SelectDB("SELECT IdSupplier,product.name,FirstName,LastName,Adress,Phone,Mail FROM supplier INNER JOIN product ON product.idProduct = supplier.idProduct")
+	defer rows.Close()
+	for rows.Next() {
+		var idSupplier int
+		var product string
+		var firstName string
+		var lastName string
+		var adress string
+		var phone string
+		var mail string
+
+		err := rows.Scan(&idSupplier, &product, &firstName, &lastName, &adress, &phone, &mail)
+		if err != nil {
+			log.Fatal(err)
+		}
+		supplierStruc := SupplierFromDb{
+			IdSupplier: idSupplier,
+			Product:    product,
+			FirstName:  firstName,
+			LastName:   lastName,
+			Adress:     adress,
+			Phone:      phone,
+			Mail:       mail,
+		}
+		allSuppliers = append(allSuppliers, supplierStruc)
+	}
+
+	return allSuppliers
+}
+
+func RecuperationSupplierWorkplace() []SupplierWorkplaceFromDb {
+	var allSuppliersWorkplace []SupplierWorkplaceFromDb
+	rows := SelectDB("SELECT workplace.name, idSupplier FROM relationWorkplaceSupplier INNER JOIN workplace ON workplace.idWorkplace = relationWorkplaceSupplier.idWorkplace")
+	defer rows.Close()
+	for rows.Next() {
+		var workplace string
+		var idSupplier int
+
+		err := rows.Scan(&workplace, &idSupplier)
+		if err != nil {
+			log.Fatal(err)
+		}
+		supplierWorkplaceStruc := SupplierWorkplaceFromDb{
+			Workplace:  workplace,
+			IdSupplier: idSupplier,
+		}
+		allSuppliersWorkplace = append(allSuppliersWorkplace, supplierWorkplaceStruc)
+	}
+
+	return allSuppliersWorkplace
+}

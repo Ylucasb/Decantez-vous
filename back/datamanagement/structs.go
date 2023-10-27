@@ -29,10 +29,17 @@ type WorkplaceFromDb struct {
 
 type SupplierFromDb struct {
 	IdSupplier int
-	IdProduct  int
+	Product    string
 	FirstName  string
 	LastName   string
 	Adress     string
 	Phone      string
 	Mail       string
+	Workplace  []string
+	IsPays     bool
+}
+
+type SupplierWorkplaceFromDb struct {
+	Workplace  string
+	IdSupplier int
 }

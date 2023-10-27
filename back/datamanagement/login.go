@@ -24,7 +24,6 @@ func IsRegister(userInput string, password string) (bool, int, bool) {
 		isExist = true
 		id = idE
 		if idP < 3 {
-			fmt.Println(idP)
 			isPays = true
 		}
 	}
