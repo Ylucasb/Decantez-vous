@@ -11,7 +11,7 @@
     <nav>
       <a class="btnNav" href="/Sites/Paris">Sites</a>
       <img class="logo" src="../img/logo2.png" alt="" />
-      <a></a>
+      <a class="btnNav" href="/Supplier">Producteurs</a>
     </nav>
 
         
@@ -27,14 +27,14 @@
             <p>Produit : {{ $instance.Product }}</p>
             <p>Adresse : {{ $instance.Adress }}</p>
             <section>
-              <p>livraison : </p>
+              <p>Livraison(s) : </p>
               {{ range $i, $a := $instance.Workplace }}
               <p>-  {{ . }}</p>
               {{ end }}
             </section>
             {{ if $instance.IsPays}}
-              <form method="post" >
-                  <button name="deleteSupplier" type="submit" value="{{ $instance.IdSupplier }}">    
+              <form method="post" class="btnSupp" >
+                  <button class="btnSupp" name="deleteSupplier" type="submit" value="{{ $instance.IdSupplier }}">    
                       supprimer
                   </button>
               </form>
