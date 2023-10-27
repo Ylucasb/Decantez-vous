@@ -12,7 +12,7 @@ func MainHandler(w http.ResponseWriter, r *http.Request) {
 	case url[1] == "" && len(url) == 2:
 		Connection(w, r)
 	case url[1] == "Sites" && len(url) == 2 && datamanagement.TestIsConnected(r):
-		Sites(w, r)
+		Sites(w, r, url[2])
 	case url[1] == "Supplier" && len(url) == 2 && datamanagement.TestIsConnected(r):
 		Supplier(w, r)
 	case url[1] == "InvalidPath" && len(url) == 2:
