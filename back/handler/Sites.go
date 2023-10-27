@@ -10,14 +10,13 @@ import (
 )
 
 type structDisplaySites struct {
-	Employee []datamanagement.EmployeeFromDb
+	Employee  []datamanagement.EmployeeFromDb
 	Workplace []datamanagement.WorkplaceFromDb
-	IsPays   bool
+	IsPays    bool
 }
 
-func Sites(w http.ResponseWriter, r *http.Request) {
+func Sites(w http.ResponseWriter, r *http.Request, adress string) {
 	t := template.Must(template.ParseFiles("./front/html/sites.html"))
-	workplace := r.FormValue("selectWorkplace")
 	cookieIsPays, _ := r.Cookie("isPays")
 	isPays := datamanagement.GetCookieValue(cookieIsPays)
 	var isPaysBool bool
@@ -26,7 +25,7 @@ func Sites(w http.ResponseWriter, r *http.Request) {
 	} else {
 		isPaysBool = false
 	}
-	structDisplaySites := structDisplaySites{datamanagement.RecuperationEmployeeWorkplace(workplace),datamanagement.RecuperationWorkplace(workplace), isPaysBool}
+	structDisplaySites := structDisplaySites{datamanagement.RecuperationEmployeeWorkplace(adress), datamanagement.RecuperationWorkplace(adress), isPaysBool}
 	if isPaysBool {
 		for i := 0; i < len(structDisplaySites.Employee); i++ {
 			structDisplaySites.Employee[i].IsPays = isPaysBool
