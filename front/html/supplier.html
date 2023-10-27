@@ -32,6 +32,13 @@
               <p>-  {{ . }}</p>
               {{ end }}
             </section>
+            {{ if $instance.IsPays}}
+              <form method="post" >
+                  <button name="deleteSupplier" type="submit" value="{{ $instance.IdSupplier }}">    
+                      supprimer
+                  </button>
+              </form>
+            {{end}}
             
         </section>
         {{ end }}
