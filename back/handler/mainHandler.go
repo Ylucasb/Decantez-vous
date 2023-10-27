@@ -16,6 +16,7 @@ func MainHandler(w http.ResponseWriter, r *http.Request) {
 	case url[1] == "InvalidPath" && len(url) == 2:
 		InvalidPath(w, r)
 	default:
+		print(r.URL.String())
 		http.Redirect(w, r, "http://localhost:8080/InvalidPath", http.StatusSeeOther)
 	}
 }

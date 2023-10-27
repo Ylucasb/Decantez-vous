@@ -10,8 +10,9 @@ import (
 )
 
 type structDisplaySites struct {
-	Employee []datamanagement.EmployeeFromDb
-	IsPays   bool
+	Employee  []datamanagement.EmployeeFromDb
+	Workplace []datamanagement.WorkplaceFromDb
+	IsPays    bool
 }
 
 func Sites(w http.ResponseWriter, r *http.Request, adress string) {
@@ -24,7 +25,7 @@ func Sites(w http.ResponseWriter, r *http.Request, adress string) {
 	} else {
 		isPaysBool = false
 	}
-	structDisplaySites := structDisplaySites{datamanagement.RecuperationEmployeeWorkplace(adress), isPaysBool}
+	structDisplaySites := structDisplaySites{datamanagement.RecuperationEmployeeWorkplace(adress), datamanagement.RecuperationWorkplace(adress), isPaysBool}
 	if isPaysBool {
 		for i := 0; i < len(structDisplaySites.Employee); i++ {
 			structDisplaySites.Employee[i].IsPays = isPaysBool

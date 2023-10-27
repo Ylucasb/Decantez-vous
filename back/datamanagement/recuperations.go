@@ -28,7 +28,7 @@ func getJob(allEmployees []EmployeeFromDb) []EmployeeFromDb {
 
 func RecuperationEmployeeWorkplace(workplace string) []EmployeeFromDb {
 	var allEmployees []EmployeeFromDb
-	rows := SelectDB("SELECT * FROM employee INNER JOIN workplace ON workplace.idWorkplace = employee.idWorkplace WHERE workplace.adress = ?", workplace)
+	rows := SelectDB("SELECT employee.idEmployee, employee.firstName, employee.lastName, employee.phone, employee.mail, employee.password, employee.birthDate, employee.hireDate, employee.IBAN, employee.idRelation, employee.idWorkplace , employee.isWorking, employee.idProfession FROM employee INNER JOIN workplace ON workplace.idWorkplace = employee.idWorkplace WHERE workplace.name = ?", string(workplace))
 	defer rows.Close()
 	for rows.Next() {
 		var idEmployee int
@@ -44,10 +44,7 @@ func RecuperationEmployeeWorkplace(workplace string) []EmployeeFromDb {
 		var hireDate time.Time
 		var iban string
 		var isWorking bool
-		var idWorkplace2 int
-		var name string
-		var adress string
-		err := rows.Scan(&idEmployee, &firstName, &lastName, &phone, &mail, &password, &birthDate, &hireDate, &iban, &idRelation, &idWorkplace, &isWorking, &idProfession, &idWorkplace2, &name, &adress)
+		err := rows.Scan(&idEmployee, &firstName, &lastName, &phone, &mail, &password, &birthDate, &hireDate, &iban, &idRelation, &idWorkplace, &isWorking, &idProfession)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -72,4 +69,32 @@ func RecuperationEmployeeWorkplace(workplace string) []EmployeeFromDb {
 	}
 	allEmployees = getJob(allEmployees)
 	return allEmployees
+}
+
+func RecuperationWorkplace(workplaceAdress string) []WorkplaceFromDb {
+	var workplace []WorkplaceFromDb
+	rows := SelectDB("SELECT * FROM workplace WHERE workplace.name = ?", workplaceAdress)
+	defer rows.Close()
+	for rows.Next() {
+		var idWorkplace int
+		var name string
+		var adress string
+		var phone string
+		var mail string
+		var typeWorkplace string
+		err := rows.Scan(&idWorkplace, &name, &adress, &phone, &mail, &typeWorkplace)
+		if err != nil {
+			log.Fatal(err)
+		}
+		workplaceStruc := WorkplaceFromDb{
+			IdWorkplace: idWorkplace,
+			Name:        name,
+			Adress:      adress,
+			Phone:       phone,
+			Mail:        mail,
+			Type:        typeWorkplace,
+		}
+		workplace = append(workplace, workplaceStruc)
+	}
+	return workplace
 }

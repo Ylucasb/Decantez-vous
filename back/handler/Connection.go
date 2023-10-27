@@ -14,7 +14,7 @@ type structDisplayHome struct {
 }
 
 func getWorkPlace(idUser int) string {
-	rows := datamanagement.SelectDB("SELECT workplace.adress FROM workplace JOIN employee ON workplace.idWorkplace = employee.idWorkplace WHERE employee.idEmployee=?", int(idUser))
+	rows := datamanagement.SelectDB("SELECT workplace.name FROM workplace JOIN employee ON workplace.idWorkplace = employee.idWorkplace WHERE employee.idEmployee=?", int(idUser))
 	var adress string
 	for rows.Next() {
 		rows.Scan(&adress)
