@@ -2,6 +2,7 @@ package datamanagement
 
 import (
 	"log"
+	"strings"
 	"time"
 
 	_ "github.com/mattn/go-sqlite3"
@@ -86,6 +87,7 @@ func RecuperationWorkplace(workplaceAdress string) []WorkplaceFromDb {
 		if err != nil {
 			log.Fatal(err)
 		}
+		typeWorkplace = strings.ToUpper(typeWorkplace) // Make typeWorkplace uppercase
 		workplaceStruc := WorkplaceFromDb{
 			IdWorkplace: idWorkplace,
 			Name:        name,

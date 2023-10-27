@@ -36,7 +36,7 @@
         {{ range $index, $instance := .Workplace }}
         <section class="cardOfstore">
           <h2>Décantez-vous {{ $instance.Name }}</h2>
-          <h3>{{ $instance.Type }}</h3>
+          <h3 class="type">{{ $instance.Type }}</h3>
           <p>Adresse : {{ $instance.Adress }}</p>
           <p>Ville : {{ $instance.Name }}</p>
           <p>Horaires : 9h-18h</p>
@@ -51,7 +51,7 @@
         <section class="cardOfEmployee">
           <img class="imgOfEmployee" src="../img/logo2.png" alt="" />
           <h2>{{ $instance.LastName }} {{ $instance.FirstName }}</h2>
-          <h3>{{$instance.Job}}</h3>
+          <h3 class="type">{{$instance.Job}}</h3>
           <p>Numéro de téléphone : {{ $instance.Phone }}</p>
           <p>Adresse mail : {{ $instance.Mail }}</p>
           <p>Date de naissance : {{ $instance.BirthDate }}</p>

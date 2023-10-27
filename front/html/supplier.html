@@ -22,15 +22,17 @@
         <section class="cardOfSupplier">
             <img class="imgOfSupplier" src="../img/logo2.png" alt="" />
             <h2>{{ $instance.LastName }} {{ $instance.FirstName }}</h2>
-            <p>Numéro de téléphone : {{ $instance.Phone }}</p>
-            <p>Adresse mail : {{ $instance.Mail }}</p>
-            <p>Produit : {{ $instance.Product }}</p>
-            <p>Adresse : {{ $instance.Adress }}</p>
-            <section>
-              <p>Livraison(s) : </p>
-              {{ range $i, $a := $instance.Workplace }}
-              <p>-  {{ . }}</p>
-              {{ end }}
+            <section class="infos">
+              <p>Numéro de téléphone : {{ $instance.Phone }}</p>
+              <p>Adresse mail : {{ $instance.Mail }}</p>
+              <p class="product">Produit : {{ $instance.Product }}</p>
+              <p>Adresse : {{ $instance.Adress }}</p>
+              <section>
+                <p>Livraison(s) : </p>
+                {{ range $i, $a := $instance.Workplace }}
+                <p>-  {{ . }}</p>
+                {{ end }}
+              </section>
             </section>
             {{ if $instance.IsPays}}
               <form method="post" class="btnSupp" >

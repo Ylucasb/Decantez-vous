@@ -151,6 +151,11 @@ nav .btnNav .btnSelect {
   margin: 1.563vw;
 }
 
+main .type {
+  margin: 1vw;
+  color: #dd5751;
+}
+
 /* ------ Footer ------ */
 
 footer {
