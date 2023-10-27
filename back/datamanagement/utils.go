@@ -23,6 +23,22 @@ func SelectDB(query string, args ...interface{}) *sql.Rows {
 	return rows
 }
 
+func AddDeleteUpdateDB(query string, args ...interface{}) sql.Result {
+	db, err := sql.Open("sqlite3", "./database/decantez-vous.db")
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	defer db.Close()
+
+	res, err := db.Exec(query, args...)
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	return res
+}
+
 func GetCookieValue(cookie *http.Cookie) string {
 	var valueReturned string
 	test := false

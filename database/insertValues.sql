@@ -75,4 +75,31 @@ INSERT INTO employee (firstName, lastName, phone, mail, password, birthDate, hir
 ('Hugo','Robin','07 45 67 89 01','hugo.robin@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','30-08-1989','15-11-2018','FR6812345678901234567890123',29,7,0,7);
 
 
-
+INSERT INTO relationWorkplaceSupplier (idSupplier, idWorkplace ) VALUES
+(1,2),
+(1,4),
+(1,5),
+(2,2),
+(3,4),
+(3,5),
+(4,6),
+(4,7),
+(5,3),
+(5,6),
+(6,2),
+(7,7),
+(8,5),
+(9,4),
+(9,5),
+(10,3),
+(11,6),
+(12,6),
+(12,7),
+(13,3),
+(14,5),
+(15,2),
+(15,7),
+(16,4),
+(17,4),
+(18,2),
+(19,5)

@@ -9,7 +9,7 @@
   <body>
 
     <nav>
-      <a class="btnNav" href="/Sites">Sites</a>
+      <a class="btnNav" href="/Sites/Paris">Sites</a>
       <img class="logo" src="../img/logo2.png" alt="" />
       <a></a>
     </nav>
@@ -32,6 +32,13 @@
               <p>-  {{ . }}</p>
               {{ end }}
             </section>
+            {{ if $instance.IsPays}}
+              <form method="post" >
+                  <button name="deleteSupplier" type="submit" value="{{ $instance.IdSupplier }}">    
+                      supprimer
+                  </button>
+              </form>
+            {{end}}
             
         </section>
         {{ end }}
