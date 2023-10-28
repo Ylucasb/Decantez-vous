@@ -16,6 +16,7 @@ type structDisplaySupplier struct {
 
 type structDisplaySupplierAfterModif struct {
 	Supplier []datamanagement.SupplierFromDb
+	IsPays   bool
 }
 
 func Supplier(w http.ResponseWriter, r *http.Request) {
@@ -30,19 +31,56 @@ func Supplier(w http.ResponseWriter, r *http.Request) {
 		isPaysBool = false
 	}
 
-	structDisplaySupplier := structDisplaySupplier{datamanagement.RecuperationSupplier()}
+	//add supplier
+	firstName := r.FormValue("firstName")
+	lastName := r.FormValue("lastName")
+	product := r.FormValue("product")
+	phone := r.FormValue("phone")
+	adress := r.FormValue("adress")
+	mail := r.FormValue("mail")
+	Nantes := r.FormValue("nantesWorkplace")
+	Marseille := r.FormValue("marseilleWorkplace")
+	Lille := r.FormValue("lilleWorkplace")
+	Bordeaux := r.FormValue("bordeauxWorkplace")
+	Strasbourg := r.FormValue("strasbourgWorkplace")
+	Lyon := r.FormValue("lyonWorkplace")
 
+	//slice for workplace
+	var addSupplierWorkplace []string
+	if Nantes != "" {
+		addSupplierWorkplace = append(addSupplierWorkplace, Nantes)
+	}
+	if Marseille != "" {
+		addSupplierWorkplace = append(addSupplierWorkplace, Marseille)
+	}
+	if Lille != "" {
+		addSupplierWorkplace = append(addSupplierWorkplace, Lille)
+	}
+	if Bordeaux != "" {
+		addSupplierWorkplace = append(addSupplierWorkplace, Bordeaux)
+	}
+	if Strasbourg != "" {
+		addSupplierWorkplace = append(addSupplierWorkplace, Strasbourg)
+	}
+	if Lyon != "" {
+		addSupplierWorkplace = append(addSupplierWorkplace, Lyon)
+	}
+
+	if firstName != "" && lastName != "" && product != "" && phone != "" && adress != "" && mail != "" {
+		datamanagement.AddSupplier(firstName, lastName, product, phone, adress, mail, addSupplierWorkplace)
+	}
+
+	// delete supplier
 	deleteSupplier := r.FormValue("deleteSupplier")
 	if deleteSupplier != "" {
-		i, err := strconv.Atoi(deleteSupplier)
+		idDeleteSupplier, err := strconv.Atoi(deleteSupplier)
 		if err != nil {
 			log.Fatal(err)
 		}
-		idDeleteSupplier := structDisplaySupplier.Supplier[i-1].IdSupplier
 		datamanagement.DeleteSupplier(idDeleteSupplier)
 	}
 
-	structDisplaySupplierAfterModif := structDisplaySupplierAfterModif{datamanagement.RecuperationSupplier()}
+	structDisplaySupplierAfterModif := structDisplaySupplierAfterModif{datamanagement.RecuperationSupplier(), isPaysBool}
 	allSuppliersWorkplace := datamanagement.RecuperationSupplierWorkplace()
 
 	if isPaysBool {
@@ -51,10 +89,11 @@ func Supplier(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	for i := 0; i < len(structDisplaySupplierAfterModif.Supplier)-1; i++ {
+	// add workplace to the structure
+	for i := 0; i < len(structDisplaySupplierAfterModif.Supplier); i++ {
 		sameSupplier := []string{}
 		sameSupplier = nil
-		for j := 0; j < len(allSuppliersWorkplace)-1; j++ {
+		for j := 0; j < len(allSuppliersWorkplace); j++ {
 			if structDisplaySupplierAfterModif.Supplier[i].IdSupplier == allSuppliersWorkplace[j].IdSupplier {
 				sameSupplier = append(sameSupplier, allSuppliersWorkplace[j].Workplace)
 			}

@@ -18,6 +18,61 @@
     </main>
 
       <section class="supplier">
+        {{ if .IsPays}}
+        <form method="post">
+          
+          <div >Prénom</div>            
+          <input type="text" name="firstName" id="firstName" required/>
+                  
+          <div >Nom</div>            
+          <input type="text" name="lastName" id="lastName" required />
+
+          <div >produit</div>
+          <select name="product" id="product">
+            <option value="vin">Vin</option>
+            <option value="rhum">Rhum</option>
+            <option value="whisky">Whisky</option>
+          </select>
+
+          <div >numéro de téléphone</div>            
+          <input type="text" name="phone" id="phone" required />
+
+          <div >adresse</div>            
+          <input type="text" name="adress" id="adress" required />
+
+          <div >mail</div>            
+          <input type="mail" name="mail" id="mail" required />
+
+          <div>
+            <input type="checkbox" name="nantesWorkplace" value="Nantes" />
+            <label for="Nantes">Nantes</label>
+          </div>
+          <div>
+            <input type="checkbox" name="marseilleWorkplace" value="Marseille" />
+            <label for="Marseille">Marseille</label>
+          </div>
+          <div>
+            <input type="checkbox" name="lilleWorkplace" value="Lille" />
+            <label for="Lille">Lille</label>
+          </div>
+          <div>
+            <input type="checkbox" name="bordeauxWorkplace" value="Bordeaux" />
+            <label for="Bordeaux">Bordeaux</label>
+          </div>
+          <div>
+            <input type="checkbox" name="strasbourgWorkplace" value="Strasbourg" />
+            <label for="Strasbourg">Strasbourg</label>
+          </div>
+          <div>
+            <input type="checkbox" name="lyonWorkplace" value="Lyon" />
+            <label for="Lyon">Lyon</label>
+          </div>
+                  
+          <input type="submit" value="créer"  />
+          
+        </form>
+        {{end}}
+
         {{ range $index, $instance := .Supplier }}
         <section class="cardOfSupplier">
             <img class="imgOfSupplier" src="../img/logo2.png" alt="" />
@@ -32,7 +87,7 @@
               <p>-  {{ . }}</p>
               {{ end }}
             </section>
-            {{ if $instance.IsPays}}
+            {{ if .IsPays}}
               <form method="post" >
                   <button name="deleteSupplier" type="submit" value="{{ $instance.IdSupplier }}">    
                       supprimer

@@ -152,3 +152,31 @@ func RecuperationSupplierWorkplace() []SupplierWorkplaceFromDb {
 
 	return allSuppliersWorkplace
 }
+
+func RecuperationProduct(product string) int {
+	rows := SelectDB("SELECT idProduct FROM product WHERE name = ?", product)
+	var idProduct int
+	defer rows.Close()
+	for rows.Next() {
+
+		err := rows.Scan(&idProduct)
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+	return idProduct
+}
+
+func RecuperationIdSupplier(firstName string, lastName string, phone string, adress string, mail string) int {
+	rows := SelectDB("SELECT idSupplier FROM supplier WHERE firstName = ? AND lastName = ? AND phone = ? AND adress = ? AND mail= ?; ", firstName, lastName, phone, adress, mail)
+	var idSupplier int
+	defer rows.Close()
+	for rows.Next() {
+
+		err := rows.Scan(&idSupplier)
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+	return idSupplier
+}
