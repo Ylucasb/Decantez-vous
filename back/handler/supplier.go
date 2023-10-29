@@ -15,20 +15,19 @@ type structDisplaySupplier struct {
 }
 
 type structDisplaySupplierAfterModif struct {
-	Supplier []datamanagement.SupplierFromDb
-	IsPays   bool
+	Supplier      []datamanagement.SupplierFromDb
+	CanAddSuplier bool
 }
 
 func Supplier(w http.ResponseWriter, r *http.Request) {
 	t := template.Must(template.ParseFiles("./front/html/supplier.html"))
-
-	cookieIsPays, _ := r.Cookie("isPays")
-	isPays := datamanagement.GetCookieValue(cookieIsPays)
-	var isPaysBool bool
-	if isPays == "true" {
-		isPaysBool = true
+	cookieIsPays, _ := r.Cookie("canAddSuplier")
+	canAddSuplier := datamanagement.GetCookieValue(cookieIsPays)
+	var canAddSuplierBool bool
+	if canAddSuplier == "true" {
+		canAddSuplierBool = true
 	} else {
-		isPaysBool = false
+		canAddSuplierBool = false
 	}
 
 	//add supplier
@@ -65,7 +64,6 @@ func Supplier(w http.ResponseWriter, r *http.Request) {
 	if Lyon != "" {
 		addSupplierWorkplace = append(addSupplierWorkplace, Lyon)
 	}
-
 	if firstName != "" && lastName != "" && product != "" && phone != "" && adress != "" && mail != "" {
 		datamanagement.AddSupplier(firstName, lastName, product, phone, adress, mail, addSupplierWorkplace)
 	}
@@ -80,12 +78,12 @@ func Supplier(w http.ResponseWriter, r *http.Request) {
 		datamanagement.DeleteSupplier(idDeleteSupplier)
 	}
 
-	structDisplaySupplierAfterModif := structDisplaySupplierAfterModif{datamanagement.RecuperationSupplier(), isPaysBool}
+	structDisplaySupplierAfterModif := structDisplaySupplierAfterModif{datamanagement.RecuperationSupplier(), canAddSuplierBool}
 	allSuppliersWorkplace := datamanagement.RecuperationSupplierWorkplace()
 
-	if isPaysBool {
+	if canAddSuplierBool {
 		for i := 0; i < len(structDisplaySupplierAfterModif.Supplier); i++ {
-			structDisplaySupplierAfterModif.Supplier[i].IsPays = isPaysBool
+			structDisplaySupplierAfterModif.Supplier[i].DeleteAuthorization = canAddSuplierBool
 		}
 	}
 

@@ -8,10 +8,11 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-func IsRegister(userInput string, password string) (bool, int, bool) {
+func IsRegister(userInput string, password string) (bool, int, bool, bool) {
 	var isExist bool = false
 	var isPays bool = false
 	var id int = 0
+	var canAddSuplier bool = false
 	passwordByte := []byte("decantez-vous" + password + "decantez-vous")
 	passwordInSha256 := sha256.Sum256(passwordByte)
 	stringPasswordInSha256 := fmt.Sprintf("%x", passwordInSha256[:])
@@ -26,8 +27,11 @@ func IsRegister(userInput string, password string) (bool, int, bool) {
 		if idP < 3 {
 			isPays = true
 		}
+		if idP == 4 || idP == 5 {
+			canAddSuplier = true
+		}
 	}
-	return isExist, id, isPays
+	return isExist, id, isPays, canAddSuplier
 }
 
 func TestIsConnected(r *http.Request) bool {

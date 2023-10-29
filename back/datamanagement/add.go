@@ -13,6 +13,5 @@ func AddSupplier(firstName string, lastName string, product string, phone string
 	for i := 0; i < len(workplace); i++ {
 		idWorkplace := RecuperationWorkplace(workplace[i])
 		AddDeleteUpdateDB("INSERT INTO relationWorkplaceSupplier (idSupplier, idWorkplace ) VALUES (?, ?);", idSupplier, idWorkplace[0].IdWorkplace)
-
 	}
 }

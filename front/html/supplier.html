@@ -18,7 +18,7 @@
     </main>
 
       <section class="supplier">
-        {{ if .IsPays}}
+        {{ if .CanAddSuplier}}
         <form method="post">
           
           <div >Prénom</div>            
@@ -89,7 +89,7 @@
                 {{ end }}
               </section>
             </section>
-            {{ if .IsPays}}
+            {{ if .DeleteAuthorization}}
               <form method="post" >
                   <button name="deleteSupplier" type="submit" value="{{ $instance.IdSupplier }}">    
                       supprimer
