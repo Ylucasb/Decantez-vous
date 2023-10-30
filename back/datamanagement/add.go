@@ -17,6 +17,6 @@ func AddSupplier(firstName string, lastName string, product string, phone string
 }
 
 func AddEmployee(firstName string, lastName string, phone string, mail string, password string, birthDate string, IBAN string, workPlaceName string, profession int, superior int) {
-	AddDeleteUpdateDB("INSERT INTO employee (firstName, lastName, phone, mail, password, birthDate, hireDate, iban, idWorkplace, isWorking, idProfession) VALUES (?,?,?,?,?,?,?,?,?,?,?);", firstName, lastName, phone, mail, password, birthDate, time.Now(), IBAN, workPlaceName, false, profession)
+	AddDeleteUpdateDB("INSERT INTO employee (firstName, lastName, phone, mail, password, birthDate, hireDate, iban, idWorkplace, isWorking, idProfession) VALUES (?,?,?,?,?,?,?,?,(SELECT idWorkplace FROM workplace WHERE name =?),?,?);", firstName, lastName, phone, mail, Hash(password), birthDate, time.Now(), IBAN, workPlaceName, false, profession)
 	AddDeleteUpdateDB("INSERT INTO relationEmployee (idEmployee, idReferent) VALUES ((SELECT idEmployee FROM employee WHERE mail = ?),(SELECT idEmployee FROM employee WHERE idEmployee = ?));", mail, superior)
 }
