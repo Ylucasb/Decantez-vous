@@ -11,10 +11,6 @@ import (
 )
 
 type structDisplaySupplier struct {
-	Supplier []datamanagement.SupplierFromDb
-}
-
-type structDisplaySupplierAfterModif struct {
 	Supplier      []datamanagement.SupplierFromDb
 	CanAddSuplier bool
 }
@@ -23,14 +19,7 @@ func Supplier(w http.ResponseWriter, r *http.Request) {
 	t := template.Must(template.ParseFiles("./front/html/supplier.html"))
 	cookieIsPays, _ := r.Cookie("canAddSuplier")
 	canAddSuplier := datamanagement.GetCookieValue(cookieIsPays)
-	var canAddSuplierBool bool
-	if canAddSuplier == "true" {
-		canAddSuplierBool = true
-	} else {
-		canAddSuplierBool = false
-	}
-
-	//add supplier
+	// Get data from html form
 	firstName := r.FormValue("firstName")
 	lastName := r.FormValue("lastName")
 	product := r.FormValue("product")
@@ -43,6 +32,13 @@ func Supplier(w http.ResponseWriter, r *http.Request) {
 	Bordeaux := r.FormValue("bordeauxWorkplace")
 	Strasbourg := r.FormValue("strasbourgWorkplace")
 	Lyon := r.FormValue("lyonWorkplace")
+
+	var canAddSuplierBool bool
+	if canAddSuplier == "true" {
+		canAddSuplierBool = true
+	} else {
+		canAddSuplierBool = false
+	}
 
 	//slice for workplace
 	var addSupplierWorkplace []string
@@ -78,28 +74,28 @@ func Supplier(w http.ResponseWriter, r *http.Request) {
 		datamanagement.DeleteSupplier(idDeleteSupplier)
 	}
 
-	structDisplaySupplierAfterModif := structDisplaySupplierAfterModif{datamanagement.RecuperationSupplier(), canAddSuplierBool}
+	structDisplaySupplier := structDisplaySupplier{datamanagement.RecuperationSupplier(), canAddSuplierBool}
 	allSuppliersWorkplace := datamanagement.RecuperationSupplierWorkplace()
 
 	if canAddSuplierBool {
-		for i := 0; i < len(structDisplaySupplierAfterModif.Supplier); i++ {
-			structDisplaySupplierAfterModif.Supplier[i].DeleteAuthorization = canAddSuplierBool
+		for i := 0; i < len(structDisplaySupplier.Supplier); i++ {
+			structDisplaySupplier.Supplier[i].DeleteAuthorization = canAddSuplierBool
 		}
 	}
 
 	// add workplace to the structure
-	for i := 0; i < len(structDisplaySupplierAfterModif.Supplier); i++ {
+	for i := 0; i < len(structDisplaySupplier.Supplier); i++ {
 		sameSupplier := []string{}
 		sameSupplier = nil
 		for j := 0; j < len(allSuppliersWorkplace); j++ {
-			if structDisplaySupplierAfterModif.Supplier[i].IdSupplier == allSuppliersWorkplace[j].IdSupplier {
+			if structDisplaySupplier.Supplier[i].IdSupplier == allSuppliersWorkplace[j].IdSupplier {
 				sameSupplier = append(sameSupplier, allSuppliersWorkplace[j].Workplace)
 			}
 		}
-		structDisplaySupplierAfterModif.Supplier[i].Workplace = sameSupplier
+		structDisplaySupplier.Supplier[i].Workplace = sameSupplier
 	}
 
-	err := t.Execute(w, structDisplaySupplierAfterModif)
+	err := t.Execute(w, structDisplaySupplier)
 	if err != nil {
 		log.Fatal(err)
 	}
