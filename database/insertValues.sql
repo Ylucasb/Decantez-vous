@@ -42,37 +42,37 @@ INSERT INTO supplier (firstName, lastName, idProduct, phone, adress, mail) VALUE
 ('Charlotte', 'Dubois', 3, '06 95 81 82 83', '789 Avenue de l Étoile', 'charlotte.dubois@email.com'),
 ('Antoine', 'Martin', 1, '06 95 30 28 58', '890 Boulevard de la Mer', 'antoine.martin@email.com');
 
-INSERT INTO employee (firstName, lastName, phone, mail, password, birthDate, hireDate, iban, idRelation, idWorkplace, isWorking, idProfession) VALUES
+INSERT INTO employee (firstName, lastName, phone, mail, password, birthDate, hireDate, iban, idWorkplace, isWorking, idProfession) VALUES
 
-('John','Doe','06 24 12 36 98','john.doe@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','15-01-1990','11-04-2017','FR761234567RTYNBVG567890123',1,1,1,1),
-('Jane','Smith','06 85 69 45 25','jane.smith@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','22-07-1985','15-05-2021','FR89MLO365MLK982013000',2,1,0,2),
-('Bob','Johnson','06 58 45 12 36','bob.johnson@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','05-03-1995','17-10-2023','FR29NWBK60161331926819',3,1,1,2),
-('Martin','Meunier','06 58 45 12 36','martin.meunier@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','15-07-1994','10-01-2020','FR29NWBDSF523M31926819',4,1,1,3),
-('Lea','Come','06 42 45 11 36','lea.come@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','15-07-1994','10-01-2020','FR29LKJUYHGTRFD1926819',5,1,1,4),
-('Camille','Lecomte','06 12 34 56 78','camille.lecomte@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','12-05-1990','15-01-2023','FR7612345678901234567890123',6,2,1,5),
-('Théo','Moulin','07 23 45 67 89','theo.moulin@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','30-07-1988','22-07-2022','FR89370400440532013000',7,3,1,5),
-('Léa','Durand','06 11 22 33 44','lea.durand@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','05-03-1995','18-05-2022','FR3514501234123456789012345',8,4,1,5),
-('Louis','Petit','07 12 34 56 78','louis.petit@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','20-10-1987','05-12-2021','FR2812345678901234567890123',9,5,1,5),
-('Emma','Moreau','06 54 32 10 98','emma.moreau@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','15-11-1992','10-04-2021','FR7612345678901234567890123',10,6,1,5),
-('Hugo','Lefebvre','07 45 67 89 01','hugo.lefebvre@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','30-06-1989','15-11-2020','FR6812345678901234567890123',11,7,1,5),
-('Lucas','Dupont','06 12 34 56 78','lucas.dupont@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','12-05-1990','15-01-2023','FR7612345678901234567890123',12,2,1,6),
-('Emma','Martin','07 23 45 67 89','emma.martin@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','30-07-1988','22-07-2022','FR89370400440532013000',13,3,1,6),
-('Louis','Dubois','06 11 22 33 44','louis.dubois@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','05-03-1995','18-05-2022','FR3514501234123456789012345',14,4,1,6),
-('Léa','Lefèvre','07 12 34 56 78','lea.lefevre@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','20-10-1987','18-08-2022','FR2812345678901234567890123',15,5,1,6),
-('Hugo','Roux','06 54 32 10 98','hugo.roux@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','15-11-1992','05-12-2021','FR7612345678901234567890123',16,6,1,6),
-('Chloé','Girard','07 45 67 89 01','chloe.girard@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','30-06-1989','10-04-2021','FR6812345678901234567890123',17,7,1,6),
-('Maxime','Martin','06 12 34 56 78','maxime.martin@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','12-05-1990','15-01-2023','FR7612345678901234567890123',18,2,1,7),
-('Manon','Lefebvre','07 23 45 67 89','manon.lefebvre@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','30-07-1988','22-07-2022','FR89370400440532013000',19,2,1,7),
-('Antoine','Moreau','06 11 22 33 44','antoine.moreau@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','05-03-1995','18-05-2022','FR3514501234123456789012345',20,3,1,7),
-('Inès','Dupont','07 12 34 56 78','ines.dupont@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','20-10-1987','05-12-2021','FR2812345678901234567890123',21,3,0,7),
-('Noé','Girard','06 54 32 10 98','noe.girard@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','15-11-1992','10-04-2021','FR7612345678901234567890123',22,4,1,7),
-('Zoé','Moulin','07 45 67 89 01','zoe.moulin@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','30-06-1989','15-11-2020','FR6812345678901234567890123',23,4,0,7),
-('Louis','Bertrand','06 12 34 56 78','louis.bertrand@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','05-04-1994','15-09-2022','FR7612345678901234567890123',24,5,1,7),
-('Léa','Roux','07 23 45 67 89','lea.roux@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','20-01-1993','22-07-2021','FR89370400440532013000',25,5,1,7),
-('Ethan','Lecomte','06 11 22 33 44','ethan.lecomte@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','05-11-1991','18-05-2020','FR3514501234123456789012345',26,6,1,7),
-('Emma','Berger','07 12 34 56 78','emma.berger@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','20-02-1996','05-12-2019','FR2812345678901234567890123',27,6,1,7),
-('Chloé','Lefèvre','06 54 32 10 98','chloe.lefevre@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','15-09-1997','10-04-2019','FR7612345678901234567890123',28,7,1,7),
-('Hugo','Robin','07 45 67 89 01','hugo.robin@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','30-08-1989','15-11-2018','FR6812345678901234567890123',29,7,0,7);
+('John','Doe','06 24 12 36 98','john.doe@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1990-01-15','2017-04-11','FR761234567RTYNBVG567890123',1,1,1),
+('Jane','Smith','06 85 69 45 25','jane.smith@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1985-07-22','2021-05-15','FR89MLO365MLK982013000',1,0,2),
+('Bob','Johnson','06 58 45 12 36','bob.johnson@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1995-03-05','2023-10-17','FR29NWBK60161331926819',1,1,2),
+('Martin','Meunier','06 58 45 12 36','martin.meunier@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','15-07-1994','2020-01-10','FR29NWBDSF523M31926819',1,1,3),
+('Lea','Come','06 42 45 11 36','lea.come@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1994-07-15','2020-01-10','FR29LKJUYHGTRFD1926819',1,1,4),
+('Camille','Lecomte','06 12 34 56 78','camille.lecomte@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1990-05-12','2023-01-15','FR7612345678901234567890123',2,1,5),
+('Théo','Moulin','07 23 45 67 89','theo.moulin@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1988-07-30','2022-07-22','FR89370400440532013000',3,1,5),
+('Léa','Durand','06 11 22 33 44','lea.durand@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1995-03-05','2022-05-18','FR3514501234123456789012345',4,1,5),
+('Louis','Petit','07 12 34 56 78','louis.petit@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1987-10-20','2021-12-05','FR2812345678901234567890123',5,1,5),
+('Emma','Moreau','06 54 32 10 98','emma.moreau@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1992-11-15','2021-04-10','FR7612345678901234567890123',6,1,5),
+('Hugo','Lefebvre','07 45 67 89 01','hugo.lefebvre@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1989-06-30','2020-11-15','FR6812345678901234567890123',7,1,5),
+('Lucas','Dupont','06 12 34 56 78','lucas.dupont@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1990-05-12','2023-01-15','FR7612345678901234567890123',2,1,6),
+('Emma','Martin','07 23 45 67 89','emma.martin@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1988-07-30','2022-07-22','FR89370400440532013000',3,1,6),
+('Louis','Dubois','06 11 22 33 44','louis.dubois@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1995-03-05','2022-05-18','FR3514501234123456789012345',4,1,6),
+('Léa','Lefèvre','07 12 34 56 78','lea.lefevre@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1987-10-20','2022-08-18','FR2812345678901234567890123',5,1,6),
+('Hugo','Roux','06 54 32 10 98','hugo.roux@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1992-11-15','2021-12-05','FR7612345678901234567890123',6,1,6),
+('Chloé','Girard','07 45 67 89 01','chloe.girard@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1989-06-30','2021-04-10','FR6812345678901234567890123',7,1,6),
+('Maxime','Martin','06 12 34 56 78','maxime.martin@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1990-05-12','2023-01-15','FR7612345678901234567890123',2,1,7),
+('Manon','Lefebvre','07 23 45 67 89','manon.lefebvre@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1988-07-30','2022-07-22','FR89370400440532013000',2,1,7),
+('Antoine','Moreau','06 11 22 33 44','antoine.moreau@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','05-03-1995','2022-05-18','FR3514501234123456789012345',3,1,7),
+('Inès','Dupont','07 12 34 56 78','ines.dupont@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1987-10-20','2021-12-05','FR2812345678901234567890123',3,0,7),
+('Noé','Girard','06 54 32 10 98','noe.girard@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1992-11-15','2021-04-10','FR7612345678901234567890123',4,1,7),
+('Zoé','Moulin','07 45 67 89 01','zoe.moulin@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1989-06-30','2020-11-15','FR6812345678901234567890123',4,0,7),
+('Louis','Bertrand','06 12 34 56 78','louis.bertrand@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1994-04-05','2022-09-15','FR7612345678901234567890123',5,1,7),
+('Léa','Roux','07 23 45 67 89','lea.roux@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1993-01-20','2021-07-22','FR89370400440532013000',5,1,7),
+('Ethan','Lecomte','06 11 22 33 44','ethan.lecomte@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1991-11-05','2020-05-18','FR3514501234123456789012345',6,1,7),
+('Emma','Berger','07 12 34 56 78','emma.berger@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1996-02-20','2019-12-05-','FR2812345678901234567890123',6,1,7),
+('Chloé','Lefèvre','06 54 32 10 98','chloe.lefevre@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1997-09-15','2019-04-10','FR7612345678901234567890123',7,1,7),
+('Hugo','Robin','07 45 67 89 01','hugo.robin@example.com','154f93d7ee57efef9aecb9b46f179a9aec8b90edb63775a6571c5275f06928a7','1989-08-30','2018-11-15','FR6812345678901234567890123',7,0,7);
 
 
 INSERT INTO relationWorkplaceSupplier (idSupplier, idWorkplace ) VALUES
@@ -102,4 +102,17 @@ INSERT INTO relationWorkplaceSupplier (idSupplier, idWorkplace ) VALUES
 (16,4),
 (17,4),
 (18,2),
-(19,5)
+(19,5);
+
+INSERT INTO relationEmployee (idEmployee, idReferent) VALUES 
+(1,1),(2,1),(3,1),
+(4,1),(5,1),(6,1),
+(7,1),(8,1),(9,1),
+(10,1),(11,1),
+(12,6),(13,7),(14,8),(15,9),
+(16,10),(17,11),
+(18,12),(19,12),(20,13),(21,13),
+(22,14),(23,14),(24,15),
+(15,25),(16,26),(27,16),
+(28,18);
+

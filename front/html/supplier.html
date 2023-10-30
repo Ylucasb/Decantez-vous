@@ -18,7 +18,7 @@
     </main>
 
       <section class="supplier">
-        {{ if .IsPays}}
+        {{ if .CanAddSuplier}}
         <button class="btnCreate" onclick="">
           <img src="../img/plus.png" alt="">
           <h2>Ajouter un producteur</h2>
@@ -104,7 +104,7 @@
                 {{ end }}
               </section>
             </section>
-            {{ if .IsPays}}
+            {{ if .DeleteAuthorization}}
               <form method="post" >
                   <button class="btnDel" name="deleteSupplier" type="submit" value="{{ $instance.IdSupplier }}">    
                       supprimer

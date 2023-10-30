@@ -1,6 +1,7 @@
 package datamanagement
 
 import (
+	"crypto/sha256"
 	"database/sql"
 	"fmt"
 	"net/http"
@@ -52,4 +53,11 @@ func GetCookieValue(cookie *http.Cookie) string {
 		}
 	}
 	return valueReturned
+}
+
+func Hash(password string) string {
+	passwordByte := []byte("decantez-vous" + password + "decantez-vous")
+	passwordInSha256 := sha256.Sum256(passwordByte)
+	stringPasswordInSha256 := fmt.Sprintf("%x", passwordInSha256[:])
+	return stringPasswordInSha256
 }

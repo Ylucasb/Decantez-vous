@@ -1,21 +1,17 @@
 package datamanagement
 
 import (
-	"crypto/sha256"
-	"fmt"
 	"net/http"
 
 	_ "github.com/mattn/go-sqlite3"
 )
 
-func IsRegister(userInput string, password string) (bool, int, bool) {
+func IsRegister(userInput string, password string) (bool, int, bool, bool) {
 	var isExist bool = false
 	var isPays bool = false
 	var id int = 0
-	passwordByte := []byte("decantez-vous" + password + "decantez-vous")
-	passwordInSha256 := sha256.Sum256(passwordByte)
-	stringPasswordInSha256 := fmt.Sprintf("%x", passwordInSha256[:])
-	rows := SelectDB("SELECT idEmployee,idProfession FROM employee WHERE mail = ? AND password = ?;", string(userInput), string(stringPasswordInSha256))
+	var canAddSuplier bool = false
+	rows := SelectDB("SELECT idEmployee,idProfession FROM employee WHERE mail = ? AND password = ?;", string(userInput), string(Hash(password)))
 	defer rows.Close()
 	for rows.Next() {
 		var idE int
@@ -26,8 +22,11 @@ func IsRegister(userInput string, password string) (bool, int, bool) {
 		if idP < 3 {
 			isPays = true
 		}
+		if idP == 4 || idP == 5 {
+			canAddSuplier = true
+		}
 	}
-	return isExist, id, isPays
+	return isExist, id, isPays, canAddSuplier
 }
 
 func TestIsConnected(r *http.Request) bool {
