@@ -97,11 +97,16 @@
           <h2>{{ $instance.LastName }} {{ $instance.FirstName }}</h2>
           <h3 class="type">{{$instance.Job}}</h3>
           {{ if .IsPays}}
-              {{ if .IsWorking}}
-                <p>travaille</p>
-              {{ else }}
-                <p>ne travaille pas</p>
-              {{end}}
+            <form method="post" >
+              <input type="text" name="nIban" id="nIban"/>
+              <input type="hidden" name="idUserSelected" id="nIban" value="{{$instance.IdEmployee}}"/>
+              <input type="submit" value="apply"  />
+            </form>
+            {{ if .IsWorking}}
+              <p>travaille</p>
+            {{ else }}
+              <p>ne travaille pas</p>
+            {{end}}
             </p>
           {{end}}
           <p>Numéro de téléphone : {{ $instance.Phone }}</p>

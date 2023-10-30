@@ -2,6 +2,7 @@ package handler
 
 import (
 	"decantez-vous/back/datamanagement"
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -45,15 +46,24 @@ func Sites(w http.ResponseWriter, r *http.Request, adress string) {
 	disconnect := r.FormValue("disconnect")
 	work := r.FormValue("work")
 	deleteEmployee := r.FormValue("deleteEmployee")
-
-	// delete supplier
-
-	if deleteEmployee != "" {
-		idDeleteSupplier, err := strconv.Atoi(deleteEmployee)
+	nIban := r.FormValue("nIban")
+	idUserSelected := r.FormValue("idUserSelected")
+	fmt.Println(nIban, idUserSelected)
+	if nIban != "" && idUserSelected != "" {
+		idUser, err := strconv.Atoi(idUserSelected)
 		if err != nil {
 			log.Fatal(err)
 		}
-		datamanagement.DeleteEmployee(idDeleteSupplier)
+		datamanagement.UpdateIban(idUser, nIban)
+	}
+	// delete employee
+	if deleteEmployee != "" {
+		idDeleteEmployee, err := strconv.Atoi(deleteEmployee)
+		if err != nil {
+			log.Fatal(err)
+		} else {
+			datamanagement.DeleteEmployee(idDeleteEmployee)
+		}
 	}
 
 	if disconnect != "" {
