@@ -22,15 +22,38 @@ nav {
   background-color: #36506c;
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-end;
+  gap: 9vw;
   border-radius: 5px;
   box-shadow: 0px 0px 2px #000000;
+}
+
+nav .nav {
+  height: 7.813vw;
+  width: 70vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+nav .btnDec {
+  width: 3vw;
+  margin-right: 2vw;
+  background-color: #36506c;
+  border: none;
+  cursor: pointer;
 }
 
 nav .logo {
   height: 6.25vw;
   width: 6.25vw;
   border-radius: 50%;
+}
+
+nav .exit {
+  height: 1.5vw;
+  width: 1.5vw;
+  background-color: #36506c;
 }
 
 nav .btnNav {
@@ -61,7 +84,7 @@ nav .btnNav .btnSelect {
   border-radius: 5px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   color: #36506c;
   font-weight: bold;
   font-size: 20px;
@@ -124,7 +147,8 @@ nav .btnNav .btnSelect {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-.employee .cardOfEmployee {
+.employee .cardOfEmployee,
+.btnCreate {
   height: 30.208vw;
   width: 25vw;
   background-color: #eff9fd;
@@ -139,12 +163,23 @@ nav .btnNav .btnSelect {
   box-shadow: 0px 0px 2px #000000;
 }
 
-.employee .cardOfEmployee:hover {
+.employee .cardOfEmployee:hover,
+.btnCreate:hover {
   background-color: #36506c;
   color: #eff9fd;
 }
 
-.employee .cardOfEmployee .imgOfEmployee {
+.btnCreate {
+  font-size: large;
+  cursor: pointer;
+}
+
+.btnCreate h2 {
+  margin: 1vw;
+}
+
+.employee .cardOfEmployee .imgOfEmployee,
+.btnCreate img {
   height: 7.813vw;
   width: 7.813vw;
   border-radius: 50%;
@@ -170,4 +205,58 @@ footer {
   justify-content: space-evenly;
   border-radius: 5px;
   box-shadow: 0px 0px 2px #000000;
+}
+
+/* Pop-up */
+
+.popUpCreate,
+.addSite {
+  position: fixed;
+  top: 5vh;
+  left: 5vw;
+  width: 90vw;
+  height: 90vh;
+  background-color: #eff9fd;
+  border: #36506c 0.5vw solid;
+  border-radius: 5px;
+  gap: 1.563vh;
+  color: #36506c;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.addSite {
+  display: flex;
+  gap: 0.5vh;
+}
+
+.popUpCreate .delivery {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.5vh;
+}
+
+.popUpCreate img {
+  width: 10vw;
+}
+
+.popUpCreate .btn,
+.popUpCreate .btnClose {
+  height: 1.5vw;
+  width: 7vw;
+  background-color: #eff9fd;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #36506c;
+  font-weight: bold;
+  font-size: 0.525vw; /* 10px */
+  border: #36506c 0.104vw solid;
+  box-shadow: 0px 0px 2px #36506c;
+  cursor: pointer;
 }

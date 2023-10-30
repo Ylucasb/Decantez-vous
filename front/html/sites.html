@@ -8,70 +8,49 @@
   </head>
   <body>
     <nav>
-      <div class="btnNav">
-        <select class="btnSelect" id="btnSitesNav" onchange="changerPage(this)">
-          <option disabled selected>Sites</option>
-          <option value="http://localhost:8080/Sites/Paris">Paris</option>
-          <option value="http://localhost:8080/Sites/Nantes">Nantes</option>
-          <option value="http://localhost:8080/Sites/Marseille">
-            Marseille
-          </option>
-          <option value="http://localhost:8080/Sites/Lille">Lille</option>
-          <option value="http://localhost:8080/Sites/Bordeaux">Bordeaux</option>
-          <option value="http://localhost:8080/Sites/Strasbourg">
-            Strasbourg
-          </option>
-          <option value="http://localhost:8080/Sites/Lyon">Lyon</option>
-        </select>
-      </div>
-      <img class="logo" src="../img/logo2.png" alt="" />
-      <a class="btnNav" href="/Supplier">Producteurs</a>
-    </nav>
-    <form method="post" >
-      <button name="work" type="submit" value="work">    
-          Travailler / Quitter le travail
-      </button>
-      <button name="disconnect" type="submit" value="disconnect">    
-        Déconnecter
-    </button>
-  </form>
-    <main>
-      <section class="supplier">
-        <form method="post">
-          
-          <div >Prénom</div>            
-          <input type="text" name="firstName" id="firstName" required/>
-                  
-          <div >Nom</div>            
-          <input type="text" name="lastName" id="lastName" required />
-
-          <div >numéro de téléphone</div>            
-          <input type="text" name="phone" id="phone" required />
-
-          <div >mail</div>            
-          <input type="mail" name="mail" id="mail" required />
-
-          <div >mot de passe</div>            
-          <input type="text" name="password" id="password" required />
-
-          <div >IBAN</div>            
-          <input type="text" name="IBAN" id="IBAN" required />
-
-          <div >Date de naissance (type 2004-11-24)</div>            
-          <input type="text" name="birthDate" id="birthDate" required />
-
-          <div >Métier</div>
-          <select name="profession" id="profession">
-            <option value="1">Directeur</option>
-            <option value="2">RH</option>
-            <option value="3">Marcket Com</option>
-            <option value="4">Commercial</option>
-            <option value="5">Gérant de site</option>
-            <option value="6">Chef d'équipe</option>
-            <option value="7">Vendeur</option>
+      <section class="nav">
+        <div class="btnNav">
+          <select
+            class="btnSelect"
+            id="btnSitesNav"
+            onchange="changerPage(this)"
+          >
+            <option disabled selected>Sites</option>
+            <option value="http://localhost:8080/Sites/Paris">Paris</option>
+            <option value="http://localhost:8080/Sites/Nantes">Nantes</option>
+            <option value="http://localhost:8080/Sites/Marseille">
+              Marseille
+            </option>
+            <option value="http://localhost:8080/Sites/Lille">Lille</option>
+            <option value="http://localhost:8080/Sites/Bordeaux">
+              Bordeaux
+            </option>
+            <option value="http://localhost:8080/Sites/Strasbourg">
+              Strasbourg
+            </option>
+            <option value="http://localhost:8080/Sites/Lyon">Lyon</option>
           </select>
-          <input type="submit" value="créer"  />
+        </div>
+        <form class="logo" method="post">
+          <button class="logo" name="work" type="submit" value="work">
+            <img class="logo" src="../img/logo2.png" alt="" />
+          </button>
         </form>
+        <a class="btnNav" href="/Supplier">Producteurs</a>
+      </section>
+      <form class="btnDec" method="post">
+        <button
+          class="btnDec"
+          name="disconnect"
+          type="submit"
+          value="disconnect"
+        >
+          <img class="exit" src="../img/exit.png" alt="" />
+        </button>
+      </form>
+    </nav>
+
+    <main>
       <section class="store">
         <section class="cardImgStore">
           <img class="imgExt" src="../img/Décantez-vous-store.png" alt="" />
@@ -91,6 +70,49 @@
       </section>
 
       <section class="employee">
+        <button class="btnCreate" onclick="">
+          <img src="../img/plus.png" alt="" />
+          <h2>Ajouter un site</h2>
+        </button>
+        <!-- PopUp  -->
+        <section class="popUpCreate">
+          <form class="addSite" method="post">
+            <div>Prénom</div>
+            <input type="text" name="firstName" id="firstName" required />
+
+            <div>Nom</div>
+            <input type="text" name="lastName" id="lastName" required />
+
+            <div>numéro de téléphone</div>
+            <input type="text" name="phone" id="phone" required />
+
+            <div>mail</div>
+            <input type="mail" name="mail" id="mail" required />
+
+            <div>mot de passe</div>
+            <input type="text" name="password" id="password" required />
+
+            <div>IBAN</div>
+            <input type="text" name="IBAN" id="IBAN" required />
+
+            <div>Date de naissance (type 2004-11-24)</div>
+            <input type="text" name="birthDate" id="birthDate" required />
+
+            <div>Métier</div>
+            <select name="profession" id="profession">
+              <option value="1">Directeur</option>
+              <option value="2">RH</option>
+              <option value="3">Marcket Com</option>
+              <option value="4">Commercial</option>
+              <option value="5">Gérant de site</option>
+              <option value="6">Chef d'équipe</option>
+              <option value="7">Vendeur</option>
+            </select>
+            <input class="btn" type="submit" value="créer" />
+
+            <button class="btnClose">Fermer</button>
+          </form>
+        </section>
         {{ range $index, $instance := .Employee }}
         <section class="cardOfEmployee">
           <img class="imgOfEmployee" src="../img/logo2.png" alt="" />
@@ -117,6 +139,19 @@
           window.location = selectedValue;
         }
       }
+
+      // PopUp
+      const btnCreate = document.querySelector(".btnCreate");
+      const popUpCreate = document.querySelector(".popUpCreate");
+      const btnClose = document.querySelector(".btnClose");
+
+      btnCreate.addEventListener("click", () => {
+        popUpCreate.style.display = "flex";
+      });
+
+      btnClose.addEventListener("click", () => {
+        popUpCreate.style.display = "none";
+      });
     </script>
   </body>
 </html>
