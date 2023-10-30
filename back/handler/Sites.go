@@ -24,7 +24,7 @@ func Disconnect(w http.ResponseWriter, r *http.Request) {
 }
 
 func isValidDateFormat(dateString string) bool {
-	_, err := time.Parse("2006-01-02", dateString)
+	_, err := time.Parse("02-01-2006", dateString)
 	return err == nil
 }
 
@@ -59,7 +59,8 @@ func Sites(w http.ResponseWriter, r *http.Request, adress string) {
 		intIdUser, err := strconv.Atoi(idUser)
 		intIdProfession, err := strconv.Atoi(idProfession)
 		if err == nil && isValidDateFormat(birthDate) {
-			datamanagement.AddEmployee(firstName, lastName, phone, mail, password, IBAN, birthDate, adress, intIdProfession, intIdUser)
+			date, _ := time.Parse("02-01-2006", birthDate)
+			datamanagement.AddEmployee(firstName, lastName, phone, mail, password, date.Format("2006-01-02"), IBAN, adress, intIdProfession, intIdUser)
 		}
 	}
 	var isPaysBool bool
