@@ -149,6 +149,11 @@
           <p>Date d'embauche : {{ $instance.HireDate }}</p>
           {{ if $instance.IsPays}}
           <p>IBAN : {{$instance.IBAN }}</p>
+            <form method="post" >
+              <input type="text" name="nIban" id="nIban"/>
+              <input type="hidden" name="idUserSelected" id="nIban" value="{{$instance.IdEmployee}}"/>
+              <input type="submit" value="apply"  />
+            </form>
           {{end}} 
           {{ if .IsPays}}
               {{ if .IsWorking}}
