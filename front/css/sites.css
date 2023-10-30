@@ -149,7 +149,7 @@ nav .btnNav .btnSelect {
 
 .employee .cardOfEmployee,
 .btnCreate {
-  height: 30.208vw;
+  height: 35vw;
   width: 25vw;
   background-color: #eff9fd;
   color: #36506c;
@@ -163,7 +163,8 @@ nav .btnNav .btnSelect {
   box-shadow: 0px 0px 2px #000000;
 }
 
-.employee .cardOfEmployee .post {
+.employee .cardOfEmployee .post,
+.employee .cardOfEmployee .iban {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -177,7 +178,8 @@ nav .btnNav .btnSelect {
 }
 
 .employee .cardOfEmployee .btnDel,
-.employee .cardOfEmployee .btnChangeWork {
+.employee .cardOfEmployee .btnChangeWork,
+.employee .cardOfEmployee .changeIban {
   height: 1.5vw;
   width: 7vw;
   background-color: #eff9fd;
@@ -192,7 +194,8 @@ nav .btnNav .btnSelect {
 }
 
 .employee .cardOfEmployee .btnDel:hover,
-.employee .cardOfEmployee .btnChangeWork:hover {
+.employee .cardOfEmployee .btnChangeWork:hover,
+.employee .cardOfEmployee .changeIban:hover {
   cursor: pointer;
   background-color: #36506c;
   color: #eff9fd;
@@ -332,7 +335,7 @@ footer {
   .cardOfstore {
     padding-top: 5vw;
     gap: 1vw;
-    height: 63vw;
+    height: 75vw;
     width: 97.917vw;
     font-size: small;
   }
@@ -363,7 +366,8 @@ footer {
   }
 
   .employee .cardOfEmployee .btnDel,
-  .employee .cardOfEmployee .btnChangeWork {
+  .employee .cardOfEmployee .btnChangeWork,
+  .employee .cardOfEmployee .changeIban {
     height: 100%;
     width: 100%;
     font-size: small;

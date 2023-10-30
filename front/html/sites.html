@@ -96,8 +96,8 @@
             <div>IBAN</div>
             <input type="text" name="IBAN" id="IBAN" required />
 
-            <div>Date de naissance (type 2004-11-24)</div>
-            <input type="text" name="birthDate" id="birthDate" required />
+            <div>Date de naissance</div>
+            <input type="text" name="birthDate" id="birthDate" required placeholder="ex. 12-11-2004"/>
 
             <div>Métier</div>
             <select name="profession" id="profession">
@@ -149,10 +149,10 @@
           <p>Date d'embauche : {{ $instance.HireDate }}</p>
           {{ if $instance.IsPays}}
           <p>IBAN : {{$instance.IBAN }}</p>
-            <form method="post" >
-              <input type="text" name="nIban" id="nIban"/>
+            <form class="iban" method="post" >
+              <input class="changeIban" type="text" name="nIban" id="nIban" placeholder="iban"/>
               <input type="hidden" name="idUserSelected" id="nIban" value="{{$instance.IdEmployee}}"/>
-              <input type="submit" value="apply"  />
+              <input class="changeIban" type="submit" value="apply"  />
             </form>
           {{end}} 
           {{ if .IsPays}}
