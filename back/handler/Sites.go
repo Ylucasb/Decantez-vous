@@ -72,7 +72,7 @@ func Sites(w http.ResponseWriter, r *http.Request, adress string) {
 			datamanagement.DeleteEmployee(idDeleteEmployee)
 		}
 	}
-
+	// Disconnect user
 	if disconnect != "" {
 		Disconnect(w, r)
 	}
