@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/supplier.css" />
+    <title>Décantez-vous</title>
+  </head>
+  <body>
+
+    <nav>
+      <a class="btnNav" href="/Sites/Paris">Sites</a>
+      <img class="logo" src="../img/logo2.png" alt="" />
+      <a class="btnNav" href="/Supplier">Producteurs</a>
+    </nav>
+
+        
+    </main>
+
+      <section class="supplier">
+        {{ if .CanAddSuplier}}
+        <button class="btnCreate" onclick="">
+          <img src="../img/plus.png" alt="">
+          <h2>Ajouter un producteur</h2>
+        </button>
+        <!-- PopUp  -->
+        <section class="popUpCreate">
+          <form class="addSupp" method="post">
+            <img src="../img/logo.png" alt="">
+            <div >Prénom</div>            
+            <input type="text" name="firstName" id="firstName" required/>
+                    
+            <div >Nom</div>            
+            <input type="text" name="lastName" id="lastName" required />
+  
+            <div >Produit</div>
+            <select name="product" id="product">
+              <option value="vin">Vin</option>
+              <option value="rhum">Rhum</option>
+              <option value="whisky">Whisky</option>
+            </select>
+  
+            <div >Numéro de téléphone</div>            
+            <input type="text" name="phone" id="phone" required />
+  
+            <div >Adresse</div>            
+            <input type="text" name="adress" id="adress" required />
+  
+            <div >Mail</div>            
+            <input type="mail" name="mail" id="mail" required />
+            
+            <section class="delivery">
+              <p>Livraison(s) : </p>
+              <div>
+                <input type="checkbox" name="nantesWorkplace" value="Nantes" />
+                <label for="Nantes">Nantes</label>
+              </div>
+              <div>
+                <input type="checkbox" name="marseilleWorkplace" value="Marseille" />
+                <label for="Marseille">Marseille</label>
+              </div>
+              <div>
+                <input type="checkbox" name="lilleWorkplace" value="Lille" />
+                <label for="Lille">Lille</label>
+              </div>
+              <div>
+                <input type="checkbox" name="bordeauxWorkplace" value="Bordeaux" />
+                <label for="Bordeaux">Bordeaux</label>
+              </div>
+              <div>
+                <input type="checkbox" name="strasbourgWorkplace" value="Strasbourg" />
+                <label for="Strasbourg">Strasbourg</label>
+              </div>
+              <div>
+                <input type="checkbox" name="lyonWorkplace" value="Lyon" />
+                <label for="Lyon">Lyon</label>
+              </div>
+            </section>
+                    
+            <input class="btn" type="submit" value="créer"  />
+
+            <button class="btnClose">
+              Fermer
+            </button>
+          </form>
+        </section>
+        
+        {{end}}
+        <!-- End PopUp -->
+
+        {{ range $index, $instance := .Supplier }}
+        <section class="cardOfSupplier">
+            <img class="imgOfSupplier" src="../img/logo2.png" alt="" />
+            <h2>{{ $instance.LastName }} {{ $instance.FirstName }}</h2>
+            <section class="infos">
+              <p>Numéro de téléphone : {{ $instance.Phone }}</p>
+              <p>Adresse mail : {{ $instance.Mail }}</p>
+              <p class="product">Produit : {{ $instance.Product }}</p>
+              <p>Adresse : {{ $instance.Adress }}</p>
+              <section>
+                <p>Livraison(s) : </p>
+                {{ range $i, $a := $instance.Workplace }}
+                <p>-  {{ . }}</p>
+                {{ end }}
+              </section>
+            </section>
+            {{ if .DeleteAuthorization}}
+              <form method="post" >
+                  <button class="btnDel" name="deleteSupplier" type="submit" value="{{ $instance.IdSupplier }}">    
+                      supprimer
+                  </button>
+              </form>
+            {{end}}
+            
+        </section>
+        {{ end }}
+      </section>
+
+    </main>
+    <footer>
+      <h3>@Décantez-vous</h3>
+    </footer>
+  </body>
+</html>
+
+<script>
+  const btnCreate = document.querySelector(".btnCreate");
+  const popUpCreate = document.querySelector(".popUpCreate");
+  const btnClose = document.querySelector(".btnClose");
+
+  btnCreate.addEventListener("click", () => {
+    popUpCreate.style.display = "flex";
+  });
+
+  btnClose.addEventListener("click", () => {
+    popUpCreate.style.display = "none";
+  });
+</script>

@@ -1,102 +1,202 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/sites.css" />
-    <title>Décantez-vou</title>
+    <title>Décantez-vous</title>
   </head>
   <body>
     <nav>
-      <form method="post">
-        <button type="submit">
-          <select class="btnNav" name="Sites" id="btnSitesNav">
-            <option value="Paris">Paris</option>
-            <option value="Lyon">Site 2</option>
-            <option value="Site3">Site 3</option>
-            <option value="Site1">Site 4</option>
-            <option value="Site2">Site 5</option>
-            <option value="Site3">Site 6</option>
+      <section class="nav">
+        <div class="btnNav">
+          <select
+            class="btnSelect"
+            id="btnSitesNav"
+            onchange="changerPage(this)"
+          >
+            <option disabled selected>Sites</option>
+            <option value="http://localhost:8080/Sites/Paris">Paris</option>
+            <option value="http://localhost:8080/Sites/Nantes">Nantes</option>
+            <option value="http://localhost:8080/Sites/Marseille">
+              Marseille
+            </option>
+            <option value="http://localhost:8080/Sites/Lille">Lille</option>
+            <option value="http://localhost:8080/Sites/Bordeaux">
+              Bordeaux
+            </option>
+            <option value="http://localhost:8080/Sites/Strasbourg">
+              Strasbourg
+            </option>
+            <option value="http://localhost:8080/Sites/Lyon">Lyon</option>
           </select>
-          <input type="hidden" value="selectWorkplace" />
+        </div>
+        <form class="logo" method="post">
+          <button class="logo" name="work" type="submit" value="work">
+            <img class="logo" src="../img/logo2.png" alt="" />
+          </button>
+        </form>
+        <a class="btnNav" href="/Supplier">Producteurs</a>
+      </section>
+      <form class="btnDec" method="post">
+        <button
+          class="btnDec"
+          name="disconnect"
+          type="submit"
+          value="disconnect"
+        >
+          <img class="exit" src="../img/exit.png" alt="" />
         </button>
       </form>
-
-      <img class="logo" src="../img/logo2.png" alt="" />
-      <a class="btnNav" href="">Producteurs</a>
     </nav>
+
     <main>
       <section class="store">
         <section class="cardImgStore">
-          <img class="imgExt" src="../img/logo.png" alt="" />
-          <section class="imgInterior">
-            <img class="imgInt" src="../img/logo2.png" alt="" />
-            <img class="imgInt" src="../img/logo2.png" alt="" />
-          </section>
+          <img class="imgExt" src="../img/Décantez-vous-store.png" alt="" />
+          <img class="imgInt" src="../img/Décantez-vous-inté.png" alt="" />
         </section>
+        {{ range $index, $instance := .Workplace }}
         <section class="cardOfstore">
-          <h2>Magasin 1</h2>
-          <p>Adresse : 1 rue de la paix</p>
-          <p>Code postal : 75000</p>
-          <p>Ville : Paris</p>
+          <h2>Décantez-vous {{ $instance.Name }}</h2>
+          <h3 class="type">{{ $instance.Type }}</h3>
+          <p>Adresse : {{ $instance.Adress }}</p>
+          <p>Ville : {{ $instance.Name }}</p>
           <p>Horaires : 9h-18h</p>
-          <p>Numéro de téléphone : 01 23 45 67 89</p>
-          <p>Adresse mail :</p>
-        </section>
-      </section>
-
-      {{ range $index, $instance := .Employee }}
-      <section class="employee">
-        <section class="cardOfEmployee">
-          <img class="imgOfEmployee" src="../img/logo2.png" alt="" />
-          <h1>{{$instance.Job}}</h1>
-          <h2>{{ $instance.LastName }} {{ $instance.FirstName }}</h2>
           <p>Numéro de téléphone : {{ $instance.Phone }}</p>
           <p>Adresse mail : {{ $instance.Mail }}</p>
-          <p>Anniversaire: {{ $instance.BirthDate }}</p>
-          <p>Date d'embauche: {{ $instance.HireDate }}</p>
+        </section>
+        {{ end }}
+      </section>
+
+      <section class="employee">
+        {{ if .IsPays}}
+        <button class="btnCreate" onclick="">
+          <img src="../img/plus.png" alt="" />
+          <h2>Ajouter un employer</h2>
+        </button>
+        <!-- PopUp  -->
+        <section class="popUpCreate">
+          <form class="addSite" method="post">
+            <div>Prénom</div>
+            <input type="text" name="firstName" id="firstName" required />
+
+            <div>Nom</div>
+            <input type="text" name="lastName" id="lastName" required />
+
+            <div>Numéro de téléphone</div>
+            <input type="text" name="phone" id="phone" required />
+
+            <div>Mail</div>
+            <input type="mail" name="mail" id="mail" required />
+
+            <div>Mot de passe</div>
+            <input type="text" name="password" id="password" required />
+
+            <div>IBAN</div>
+            <input type="text" name="IBAN" id="IBAN" required />
+
+            <div>Date de naissance (type 2004-11-24)</div>
+            <input type="text" name="birthDate" id="birthDate" required />
+
+            <div>Métier</div>
+            <select name="profession" id="profession">
+              <option value="1">Directeur</option>
+              <option value="2">RH</option>
+              <option value="3">Marcket Com</option>
+              <option value="4">Commercial</option>
+              <option value="5">Gérant de site</option>
+              <option value="6">Chef d'équipe</option>
+              <option value="7">Vendeur</option>
+            </select>
+            <input class="btn" type="submit" value="créer" />
+
+            <button class="btnClose">Fermer</button>
+          </form>
+        </section>
+        {{end}}
+        {{ range $index, $instance := .Employee }}
+        <section class="cardOfEmployee">
+          <img class="imgOfEmployee" src="../img/logo2.png" alt="" />
+          <h2>{{ $instance.LastName }} {{ $instance.FirstName }}</h2>
+          <section class="post">
+            <h3 class="typePost">{{$instance.Job}}</h3>
+            {{ if $instance.IsPays}}
+            <form class="post" method="post">
+              <select class="btnChangeWork" name="changeWork">
+                <option disabled selected>poste</option>
+                <option value="1,{{ $instance.IdEmployee }}">Directeur</option>
+                <option value="2,{{ $instance.IdEmployee }}">RH</option>
+                <option value="3,{{ $instance.IdEmployee }}">
+                  Marcket Com
+                </option>
+                <option value="4,{{ $instance.IdEmployee }}">Commercial</option>
+                <option value="5,{{ $instance.IdEmployee }}">
+                  Gérant de site
+                </option>
+                <option value="6,{{ $instance.IdEmployee }}">
+                  Chef d'équipe
+                </option>
+                <option value="7,{{ $instance.IdEmployee }}">Vendeur</option>
+              </select>
+              <input class="btnChangeWork" type="submit" value="changer" />
+            </form>
+            {{end}}
+          </section>
+          <p>Numéro de téléphone : {{ $instance.Phone }}</p>
+          <p>Adresse mail : {{ $instance.Mail }}</p>
+          <p>Date de naissance : {{ $instance.BirthDate }}</p>
+          <p>Date d'embauche : {{ $instance.HireDate }}</p>
           {{ if $instance.IsPays}}
-            <p>{{$instance.IBAN }}</p>
+          <p>IBAN : {{$instance.IBAN }}</p>
+          {{end}} 
+          {{ if .IsPays}}
+              {{ if .IsWorking}}
+                <p class="isWorking">Travaille</p>
+              {{ else }}
+                <p class="isWorking">Ne travaille pas</p>
+              {{end}}
+            </p>
+          {{end}}
+          {{ if .IsPays}}
+          <form method="post">
+            <button
+              class="btnDel"
+              name="deleteEmployee"
+              type="submit"
+              value="{{ $instance.IdEmployee }}"
+            >
+              supprimer
+            </button>
+          </form>
           {{end}}
         </section>
         {{ end }}
-        <section class="cardOfEmployee">
-          <img class="imgOfEmployee" src="../img/logo2.png" alt="" />
-          <h2>Employé 1</h2>
-          <p>Nom : Dupont</p>
-          <p>Prénom : Jean</p>
-          <p>Numéro de téléphone : 01 23 45 67 89</p>
-          <p>Adresse mail :</p>
-          <p>Anniv</p>
-          <p>Date d'embauche</p>
-          <p>IBAN if RH</p>
-        </section>
-        <section class="cardOfEmployee">
-          <img class="imgOfEmployee" src="../img/logo2.png" alt="" />
-          <h2>Employé 1</h2>
-          <p>Nom : Dupont</p>
-          <p>Prénom : Jean</p>
-          <p>Numéro de téléphone : 01 23 45 67 89</p>
-          <p>Adresse mail :</p>
-          <p>Anniv</p>
-          <p>Date d'embauche</p>
-          <p>IBAN if RH</p>
-        </section>
-        <section class="cardOfEmployee">
-          <img class="imgOfEmployee" src="../img/logo2.png" alt="" />
-          <h2>Employé 1</h2>
-          <p>Nom : Dupont</p>
-          <p>Prénom : Jean</p>
-          <p>Numéro de téléphone : 01 23 45 67 89</p>
-          <p>Adresse mail :</p>
-          <p>Anniv</p>
-          <p>Date d'embauche</p>
-          <p>IBAN if RH</p>
-        </section>
       </section>
     </main>
     <footer>
       <h3>@Décantez-vous</h3>
     </footer>
+    <script>
+      function changerPage(selectElement) {
+        var selectedValue = selectElement.value;
+        if (selectedValue) {
+          window.location = selectedValue;
+        }
+      }
+
+      // PopUp
+      const btnCreate = document.querySelector(".btnCreate");
+      const popUpCreate = document.querySelector(".popUpCreate");
+      const btnClose = document.querySelector(".btnClose");
+
+      btnCreate.addEventListener("click", () => {
+        popUpCreate.style.display = "flex";
+      });
+
+      btnClose.addEventListener("click", () => {
+        popUpCreate.style.display = "none";
+      });
+    </script>
   </body>
 </html>

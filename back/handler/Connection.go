@@ -5,11 +5,21 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"strconv"
 	"time"
 )
 
 type structDisplayHome struct {
 	IsNotValid bool
+}
+
+func getWorkPlace(idUser int) string {
+	rows := datamanagement.SelectDB("SELECT workplace.name FROM workplace JOIN employee ON workplace.idWorkplace = employee.idWorkplace WHERE employee.idEmployee=?", int(idUser))
+	var adress string
+	for rows.Next() {
+		rows.Scan(&adress)
+	}
+	return adress
 }
 
 func Connection(w http.ResponseWriter, r *http.Request) {
@@ -19,13 +29,17 @@ func Connection(w http.ResponseWriter, r *http.Request) {
 	email := r.FormValue("userEmail")
 	userPassword := r.FormValue("userPassword")
 	if email != "" && userPassword != "" {
-		ifUserExist, idUser := datamanagement.IsRegister(email, userPassword)
+		ifUserExist, idUser, isPays, canAddSuplier := datamanagement.IsRegister(email, userPassword)
 		if ifUserExist {
-			cookieIdUser := http.Cookie{Name: "idUser", Value: idUser, Expires: time.Now().Add(30 * time.Minute)}
+			cookieIdUser := http.Cookie{Name: "idUser", Value: strconv.Itoa(idUser), Expires: time.Now().Add(30 * time.Minute)}
 			http.SetCookie(w, &cookieIdUser)
 			cookieIsConnected := http.Cookie{Name: "isConnected", Value: "true", Expires: time.Now().Add(30 * time.Minute)}
 			http.SetCookie(w, &cookieIsConnected)
-			http.Redirect(w, r, "/Sites", http.StatusSeeOther)
+			cookieIsPays := http.Cookie{Name: "isPays", Value: strconv.FormatBool(isPays), Expires: time.Now().Add(30 * time.Minute)}
+			http.SetCookie(w, &cookieIsPays)
+			cookieCanAddSuplier := http.Cookie{Name: "canAddSuplier", Value: strconv.FormatBool(canAddSuplier), Expires: time.Now().Add(30 * time.Minute)}
+			http.SetCookie(w, &cookieCanAddSuplier)
+			http.Redirect(w, r, "/Sites/"+getWorkPlace(idUser), http.StatusSeeOther)
 		} else {
 			structDisplayHome.IsNotValid = true
 		}
