@@ -44,6 +44,17 @@ func Sites(w http.ResponseWriter, r *http.Request, adress string) {
 	idProfession := r.FormValue("profession")
 	disconnect := r.FormValue("disconnect")
 	work := r.FormValue("work")
+	deleteEmployee := r.FormValue("deleteEmployee")
+
+	// delete supplier
+
+	if deleteEmployee != "" {
+		idDeleteSupplier, err := strconv.Atoi(deleteEmployee)
+		if err != nil {
+			log.Fatal(err)
+		}
+		datamanagement.DeleteEmployee(idDeleteSupplier)
+	}
 
 	if disconnect != "" {
 		Disconnect(w, r)
@@ -56,6 +67,7 @@ func Sites(w http.ResponseWriter, r *http.Request, adress string) {
 	}
 
 	if firstName != "" && lastName != "" && phone != "" && mail != "" && password != "" && IBAN != "" && birthDate != "" && idProfession != "" {
+		println("test")
 		intIdUser, err := strconv.Atoi(idUser)
 		intIdProfession, err := strconv.Atoi(idProfession)
 		if err == nil && isValidDateFormat(birthDate) {
@@ -63,6 +75,7 @@ func Sites(w http.ResponseWriter, r *http.Request, adress string) {
 			datamanagement.AddEmployee(firstName, lastName, phone, mail, password, date.Format("2006-01-02"), IBAN, adress, intIdProfession, intIdUser)
 		}
 	}
+
 	var isPaysBool bool
 	if isPays == "true" {
 		isPaysBool = true
