@@ -103,6 +103,13 @@
           {{ if $instance.IsPays}}
           <p>IBAN : {{$instance.IBAN }}</p>
           {{end}}
+          {{ if .IsPays}}
+              <form method="post" >
+                  <button class="btnDel" name="deleteEmployee" type="submit" value="{{ $instance.IdEmployee }}">    
+                      supprimer
+                  </button>
+              </form>
+            {{end}}
         </section>
         {{ end }}
       </section>
