@@ -29,7 +29,7 @@ func getJob(allEmployees []EmployeeFromDb) []EmployeeFromDb {
 
 func RecuperationEmployeeWorkplace(workplace string) []EmployeeFromDb {
 	var allEmployees []EmployeeFromDb
-	rows := SelectDB("SELECT employee.idEmployee, employee.firstName, employee.lastName, employee.phone, employee.mail, employee.password, employee.birthDate, employee.hireDate, employee.IBAN, employee.idRelation, employee.idWorkplace , employee.isWorking, employee.idProfession FROM employee INNER JOIN workplace ON workplace.idWorkplace = employee.idWorkplace WHERE workplace.name = ?", string(workplace))
+	rows := SelectDB("SELECT employee.idEmployee, employee.firstName, employee.lastName, employee.phone, employee.mail, employee.password, employee.birthDate, employee.hireDate, employee.IBAN, employee.idWorkplace , employee.isWorking, employee.idProfession FROM employee INNER JOIN workplace ON workplace.idWorkplace = employee.idWorkplace WHERE workplace.name = ?", string(workplace))
 	defer rows.Close()
 	for rows.Next() {
 		var idEmployee int
@@ -45,7 +45,7 @@ func RecuperationEmployeeWorkplace(workplace string) []EmployeeFromDb {
 		var hireDate time.Time
 		var iban string
 		var isWorking bool
-		err := rows.Scan(&idEmployee, &firstName, &lastName, &phone, &mail, &password, &birthDate, &hireDate, &iban, &idRelation, &idWorkplace, &isWorking, &idProfession)
+		err := rows.Scan(&idEmployee, &firstName, &lastName, &phone, &mail, &password, &birthDate, &hireDate, &iban, &idWorkplace, &isWorking, &idProfession)
 		if err != nil {
 			log.Fatal(err)
 		}
