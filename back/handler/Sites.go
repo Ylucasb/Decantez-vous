@@ -2,7 +2,6 @@ package handler
 
 import (
 	"decantez-vous/back/datamanagement"
-	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -14,9 +13,10 @@ import (
 )
 
 type structDisplaySites struct {
-	Employee  []datamanagement.EmployeeFromDb
-	Workplace []datamanagement.WorkplaceFromDb
-	IsPays    bool
+	Employee     []datamanagement.EmployeeFromDb
+	Workplace    []datamanagement.WorkplaceFromDb
+	IsPays       bool
+	ErrorGestion string
 }
 
 func Disconnect(w http.ResponseWriter, r *http.Request) {
@@ -50,7 +50,9 @@ func Sites(w http.ResponseWriter, r *http.Request, adress string) {
 	changeWork := r.FormValue("changeWork")
 	nIban := r.FormValue("nIban")
 	idUserSelected := r.FormValue("idUserSelected")
-	fmt.Println(nIban, idUserSelected)
+	errorGestion := ""
+
+	//change IBAN
 	if nIban != "" && idUserSelected != "" {
 		idUser, err := strconv.Atoi(idUserSelected)
 		if err != nil {
@@ -84,12 +86,13 @@ func Sites(w http.ResponseWriter, r *http.Request, adress string) {
 	}
 
 	if firstName != "" && lastName != "" && phone != "" && mail != "" && password != "" && IBAN != "" && birthDate != "" && idProfession != "" {
-		println("test")
 		intIdUser, err := strconv.Atoi(idUser)
 		intIdProfession, err := strconv.Atoi(idProfession)
 		if err == nil && isValidDateFormat(birthDate) {
 			date, _ := time.Parse("02-01-2006", birthDate)
 			datamanagement.AddEmployee(firstName, lastName, phone, mail, password, date.Format("2006-01-02"), IBAN, adress, intIdProfession, intIdUser)
+		} else {
+			errorGestion = "erreur a la creation de l'employé"
 		}
 	}
 
@@ -99,7 +102,7 @@ func Sites(w http.ResponseWriter, r *http.Request, adress string) {
 	} else {
 		isPaysBool = false
 	}
-	structDisplaySites := structDisplaySites{datamanagement.RecuperationEmployeeWorkplace(adress), datamanagement.RecuperationWorkplace(adress), isPaysBool}
+	structDisplaySites := structDisplaySites{datamanagement.RecuperationEmployeeWorkplace(adress), datamanagement.RecuperationWorkplace(adress), isPaysBool, errorGestion}
 	if isPaysBool {
 		for i := 0; i < len(structDisplaySites.Employee); i++ {
 			structDisplaySites.Employee[i].IsPays = isPaysBool
