@@ -190,9 +190,10 @@ footer {
 }
 
 .popUpCreate .btn,
-.popUpCreate .btnClose {
+.popUpCreate .btnClose,
+.popUpCreate .inputPop {
   height: 1.5vw;
-  width: 7vw;
+  width: 10vw;
   background-color: #eff9fd;
   border-radius: 5px;
   display: flex;
@@ -206,7 +207,7 @@ footer {
   cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1650px) {
   nav,
   footer {
     height: 15vw;
@@ -270,9 +271,10 @@ footer {
   }
 
   .popUpCreate .btn,
-  .popUpCreate .btnClose {
+  .popUpCreate .btnClose,
+  .popUpCreate .inputPop {
     height: 5vw;
-    width: 24vw;
+    width: 30vw;
     font-size: small;
     margin-top: 2vw;
   }

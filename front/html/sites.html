@@ -79,28 +79,28 @@
         <section class="popUpCreate">
           <form class="addSite" method="post">
             <div>Prénom</div>
-            <input type="text" name="firstName" id="firstName" required />
+            <input class="inputPop" type="text" name="firstName" id="firstName" required />
 
             <div>Nom</div>
-            <input type="text" name="lastName" id="lastName" required />
+            <input class="inputPop" type="text" name="lastName" id="lastName" required />
 
             <div>Numéro de téléphone</div>
-            <input type="text" name="phone" id="phone" required />
+            <input class="inputPop" type="text" name="phone" id="phone" required />
 
             <div>Mail</div>
-            <input type="mail" name="mail" id="mail" required />
+            <input class="inputPop" type="mail" name="mail" id="mail" required />
 
             <div>Mot de passe</div>
-            <input type="text" name="password" id="password" required />
+            <input class="inputPop" type="text" name="password" id="password" required />
 
             <div>IBAN</div>
-            <input type="text" name="IBAN" id="IBAN" required />
+            <input class="inputPop" type="text" name="IBAN" id="IBAN" required />
 
             <div>Date de naissance</div>
-            <input type="text" name="birthDate" id="birthDate" required placeholder="ex. 12-11-2004"/>
+            <input class="inputPop" type="text" name="birthDate" id="birthDate" required placeholder="ex. 12-11-2004"/>
 
             <div>Métier</div>
-            <select name="profession" id="profession">
+            <select class="inputPop" name="profession" id="profession">
               <option value="1">Directeur</option>
               <option value="2">RH</option>
               <option value="3">Marcket Com</option>
@@ -109,7 +109,7 @@
               <option value="6">Chef d'équipe</option>
               <option value="7">Vendeur</option>
             </select>
-            <input class="btn" type="submit" value="créer" />
+            <input class="btn" type="submit" value="Créer" />
 
             <button class="btnClose">Fermer</button>
           </form>
@@ -139,7 +139,7 @@
                 </option>
                 <option value="7,{{ $instance.IdEmployee }}">Vendeur</option>
               </select>
-              <input class="btnChangeWork" type="submit" value="changer" />
+              <input class="btnChangeWork" type="submit" value="Changer" />
             </form>
             {{end}}
           </section>
@@ -152,7 +152,7 @@
             <form class="iban" method="post" >
               <input class="changeIban" type="text" name="nIban" id="nIban" placeholder="iban"/>
               <input type="hidden" name="idUserSelected" id="nIban" value="{{$instance.IdEmployee}}"/>
-              <input class="changeIban" type="submit" value="apply"  />
+              <input class="changeIban" type="submit" value="Appliquer"  />
             </form>
           {{end}} 
           {{ if .IsPays}}
@@ -171,7 +171,7 @@
               type="submit"
               value="{{ $instance.IdEmployee }}"
             >
-              supprimer
+              Supprimer
             </button>
           </form>
           {{end}}
