@@ -229,11 +229,10 @@ footer {
   }
 
   .supplier .cardOfSupplier {
-    padding-left: 3vw;
+    padding-top: 5vw;
     gap: 1vw;
-    height: 45vw;
+    height: 55vw;
     width: 97.917vw;
-    flex-direction: row;
     font-size: small;
   }
 
@@ -259,12 +258,10 @@ footer {
   }
 
   .supplier .cardOfSupplier .btnDel {
-    height: 3vw;
-    width: 10vw;
-    position: relative;
-    top: 10vh;
-    right: 80vw;
-    font-size: 1vw;
+    font-size: small;
+    height: 100%;
+    width: 100%;
+    padding: 0.5vw;
   }
 
   .popUpCreate,

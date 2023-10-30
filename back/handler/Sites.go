@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"strconv"
+	"strings"
 	"time"
 
 	_ "github.com/mattn/go-sqlite3"
@@ -46,6 +47,7 @@ func Sites(w http.ResponseWriter, r *http.Request, adress string) {
 	disconnect := r.FormValue("disconnect")
 	work := r.FormValue("work")
 	deleteEmployee := r.FormValue("deleteEmployee")
+	changeWork := r.FormValue("changeWork")
 	nIban := r.FormValue("nIban")
 	idUserSelected := r.FormValue("idUserSelected")
 	fmt.Println(nIban, idUserSelected)
@@ -55,6 +57,11 @@ func Sites(w http.ResponseWriter, r *http.Request, adress string) {
 			log.Fatal(err)
 		}
 		datamanagement.UpdateIban(idUser, nIban)
+	}
+	//changeWork
+	if changeWork != "" {
+		changeWork := strings.Split(changeWork, ",")
+		datamanagement.ChangeWork(changeWork)
 	}
 	// delete employee
 	if deleteEmployee != "" {
