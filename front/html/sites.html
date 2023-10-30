@@ -70,9 +70,10 @@
       </section>
 
       <section class="employee">
+        {{ if .IsPays}}
         <button class="btnCreate" onclick="">
           <img src="../img/plus.png" alt="" />
-          <h2>Ajouter un site</h2>
+          <h2>Ajouter un employer</h2>
         </button>
         <!-- PopUp  -->
         <section class="popUpCreate">
@@ -83,13 +84,13 @@
             <div>Nom</div>
             <input type="text" name="lastName" id="lastName" required />
 
-            <div>numéro de téléphone</div>
+            <div>Numéro de téléphone</div>
             <input type="text" name="phone" id="phone" required />
 
-            <div>mail</div>
+            <div>Mail</div>
             <input type="mail" name="mail" id="mail" required />
 
-            <div>mot de passe</div>
+            <div>Mot de passe</div>
             <input type="text" name="password" id="password" required />
 
             <div>IBAN</div>
@@ -113,49 +114,62 @@
             <button class="btnClose">Fermer</button>
           </form>
         </section>
+        {{end}}
         {{ range $index, $instance := .Employee }}
         <section class="cardOfEmployee">
           <img class="imgOfEmployee" src="../img/logo2.png" alt="" />
           <h2>{{ $instance.LastName }} {{ $instance.FirstName }}</h2>
-          <h3 class="type">{{$instance.Job}}
+          <section class="post">
+            <h3 class="typePost">{{$instance.Job}}</h3>
             {{ if $instance.IsPays}}
-            <form method="post">
-              <select name="changeWork">
+            <form class="post" method="post">
+              <select class="btnChangeWork" name="changeWork">
                 <option disabled selected>poste</option>
                 <option value="1,{{ $instance.IdEmployee }}">Directeur</option>
                 <option value="2,{{ $instance.IdEmployee }}">RH</option>
-                <option value="3,{{ $instance.IdEmployee }}">Marcket Com</option>
+                <option value="3,{{ $instance.IdEmployee }}">
+                  Marcket Com
+                </option>
                 <option value="4,{{ $instance.IdEmployee }}">Commercial</option>
-                <option value="5,{{ $instance.IdEmployee }}">Gérant de site</option>
-                <option value="6,{{ $instance.IdEmployee }}">Chef d'équipe</option>
+                <option value="5,{{ $instance.IdEmployee }}">
+                  Gérant de site
+                </option>
+                <option value="6,{{ $instance.IdEmployee }}">
+                  Chef d'équipe
+                </option>
                 <option value="7,{{ $instance.IdEmployee }}">Vendeur</option>
               </select>
-              <input type="submit" value="changer"  />
+              <input class="btnChangeWork" type="submit" value="changer" />
             </form>
             {{end}}
-          </h3>
-          {{ if .IsPays}}
-              {{ if .IsWorking}}
-                <p>travaille</p>
-              {{ else }}
-                <p>ne travaille pas</p>
-              {{end}}
-            </p>
-          {{end}}
+          </section>
           <p>Numéro de téléphone : {{ $instance.Phone }}</p>
           <p>Adresse mail : {{ $instance.Mail }}</p>
           <p>Date de naissance : {{ $instance.BirthDate }}</p>
           <p>Date d'embauche : {{ $instance.HireDate }}</p>
           {{ if $instance.IsPays}}
           <p>IBAN : {{$instance.IBAN }}</p>
+          {{end}} 
+          {{ if .IsPays}}
+              {{ if .IsWorking}}
+                <p class="isWorking">Travaille</p>
+              {{ else }}
+                <p class="isWorking">Ne travaille pas</p>
+              {{end}}
+            </p>
           {{end}}
           {{ if .IsPays}}
-              <form method="post" >
-                  <button class="btnDel" name="deleteEmployee" type="submit" value="{{ $instance.IdEmployee }}">    
-                      supprimer
-                  </button>
-              </form>
-            {{end}}
+          <form method="post">
+            <button
+              class="btnDel"
+              name="deleteEmployee"
+              type="submit"
+              value="{{ $instance.IdEmployee }}"
+            >
+              supprimer
+            </button>
+          </form>
+          {{end}}
         </section>
         {{ end }}
       </section>

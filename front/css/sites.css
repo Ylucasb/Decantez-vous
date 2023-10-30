@@ -163,6 +163,42 @@ nav .btnNav .btnSelect {
   box-shadow: 0px 0px 2px #000000;
 }
 
+.employee .cardOfEmployee .post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2vw;
+}
+
+.employee .cardOfEmployee .typePost,
+.employee .cardOfEmployee .isWorking {
+  color: #dd5751;
+}
+
+.employee .cardOfEmployee .btnDel,
+.employee .cardOfEmployee .btnChangeWork {
+  height: 1.5vw;
+  width: 7vw;
+  background-color: #eff9fd;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #36506c;
+  font-weight: bold;
+  font-size: 0.525vw;
+  border: #36506c 0.104vw solid;
+}
+
+.employee .cardOfEmployee .btnDel:hover,
+.employee .cardOfEmployee .btnChangeWork:hover {
+  cursor: pointer;
+  background-color: #36506c;
+  color: #eff9fd;
+  border: #eff9fd 0.104vw solid;
+}
+
 .employee .cardOfEmployee:hover,
 .btnCreate:hover {
   background-color: #36506c;
@@ -296,7 +332,7 @@ footer {
   .cardOfstore {
     padding-top: 5vw;
     gap: 1vw;
-    height: 55vw;
+    height: 63vw;
     width: 97.917vw;
     font-size: small;
   }
@@ -326,13 +362,12 @@ footer {
     gap: 0.521vw;
   }
 
-  .employee .cardOfEmployee .btnDel {
-    height: 3vw;
-    width: 10vw;
-    position: relative;
-    top: 10vh;
-    right: 80vw;
-    font-size: 1vw;
+  .employee .cardOfEmployee .btnDel,
+  .employee .cardOfEmployee .btnChangeWork {
+    height: 100%;
+    width: 100%;
+    font-size: small;
+    padding: 0.5vw;
   }
 
   .popUpCreate,
