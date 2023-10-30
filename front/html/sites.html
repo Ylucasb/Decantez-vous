@@ -96,6 +96,14 @@
           <img class="imgOfEmployee" src="../img/logo2.png" alt="" />
           <h2>{{ $instance.LastName }} {{ $instance.FirstName }}</h2>
           <h3 class="type">{{$instance.Job}}</h3>
+          {{ if .IsPays}}
+              {{ if .IsWorking}}
+                <p>travaille</p>
+              {{ else }}
+                <p>ne travaille pas</p>
+              {{end}}
+            </p>
+          {{end}}
           <p>Numéro de téléphone : {{ $instance.Phone }}</p>
           <p>Adresse mail : {{ $instance.Mail }}</p>
           <p>Date de naissance : {{ $instance.BirthDate }}</p>
@@ -103,6 +111,13 @@
           {{ if $instance.IsPays}}
           <p>IBAN : {{$instance.IBAN }}</p>
           {{end}}
+          {{ if .IsPays}}
+              <form method="post" >
+                  <button class="btnDel" name="deleteEmployee" type="submit" value="{{ $instance.IdEmployee }}">    
+                      supprimer
+                  </button>
+              </form>
+            {{end}}
         </section>
         {{ end }}
       </section>
