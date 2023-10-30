@@ -7,6 +7,8 @@
 - *Execute `git clone https://github.com/Ylucasb/Decantez-vous.git`.*
 
 ## **HOW TO PLAY:**
+- *In the directory `DECANTEZ-VOUS` execute `go mod init decantez-vous`.*
+- *In the directory `DECANTEZ-VOUS` execute `go mod tidy`.*
 - *In the directory `DECANTEZ-VOUS` execute `go run main.go`.*
 
 ## **FEATURES:**
