@@ -22,7 +22,7 @@ func IsRegister(userInput string, password string) (bool, int, bool, bool) {
 		if idP < 3 {
 			isPays = true
 		}
-		if idP == 4 || idP == 5 {
+		if idP == 4 || idP == 5 || idP == 1 {
 			canAddSuplier = true
 		}
 	}
