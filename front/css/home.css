@@ -1,71 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Poppins", sans-serif;
+}
+
 body {
-    background-color: rgb(236,247,253);
-    display: flex;
-    justify-content: space-around;
+  background-color: rgb(236, 247, 253);
+  display: flex;
+  justify-content: space-around;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.connexion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 20vw;
+  width: 70vw;
+  background-color: #36506c;
+  border-radius: 5px;
+  padding: 2vw;
+  margin-top: 2vw;
+  box-shadow: 0px 0px 2px #000000;
 }
 
 .logo {
-    height: 20vw;
-    width: 35vw;   
+  margin-top: 5vw;
+  width: 25vw;
 }
 
 .box_form {
-    font-size: 1.5vw;
-    color: #EFF9FD;
-    background-color: #36506C;  
-    padding-top : 1vw;
-    padding-bottom : 1vw;
-    margin-bottom: 2vw;
-    border-radius: 8px;
+  width: 100%;
+  font-size: 1.5vw;
+  color: #eff9fd;
+  background-color: #36506c;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  margin-bottom: 2vw;
+  border-radius: 8px;
 }
 
-.display_flex{
-    display: flex;
-    justify-content: center;
+.display_flex {
+  display: flex;
+  justify-content: center;
 }
 
-.box_Email_input{
-    display: flex;
-    justify-content: center;
-    margin-top: 0.5vw;
-    margin-bottom: 0.5vw;
-    width: 100%;
-
+.box_Email_input {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5vw;
+  margin-bottom: 0.5vw;
+  width: 100%;
 }
 
 .Email_input {
-    height: 2vw;
-    width: 80%;
-    border-radius: 5px;
+  height: 2vw;
+  width: 80%;
+  border-radius: 5px;
 }
 
-.box_password_input{
-    display: flex;
-    justify-content: center;
-    margin-top: 0.5vw;
-    margin-bottom: 0.5vw;
-    width: 100%;
+.box_password_input {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5vw;
+  margin-bottom: 0.5vw;
+  width: 100%;
 }
 
 .password_input {
-    height: 2vw;
-    width: 80%;
-    border-radius: 5px;
+  height: 2vw;
+  width: 80%;
+  border-radius: 5px;
 }
 
 .box_connect_me {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 .connect_me_input {
-    background-color: #EFF9FD;
-    color:#36506C;
+  background-color: #eff9fd;
+  color: #36506c;
+  font-size: 1.5vw;
+  width: 100%;
+  border-radius: 5px;
+  padding: 0.6vw;
+  cursor: pointer;
+  border-color: #36506c;
+}
+
+@media screen and (max-width: 768px) {
+  .logo {
+    width: 35vw;
+  }
+  .connexion {
+    height: 35vw;
+    width: 90vw;
+  }
+  .box_form {
+    height: 100%;
+    width: 100%;
+    font-size: 1.5vw;
+    font-size: small;
+  }
+  .Email_input {
+    height: 5vw;
+  }
+  .password_input {
+    height: 5vw;
+  }
+  .connect_me_input {
     font-size: 1.5vw;
     width: 100%;
-    border-radius: 5px;
-    padding-top: 0.6vw;
-    padding-bottom: 0.6vw;
-    cursor: pointer;
-    border-color: #36506C;
+    font-size: small;
+  }
 }
