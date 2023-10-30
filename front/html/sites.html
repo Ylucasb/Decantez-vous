@@ -51,6 +51,10 @@
     </nav>
 
     <main>
+      {{ if eq .ErrorGestion "" }}
+      {{ else }}
+        <p>une erreur est suvenue : {{ .ErrorGestion }}</p>
+      {{ end }}
       <section class="store">
         <section class="cardImgStore">
           <img class="imgExt" src="../img/Décantez-vous-store.png" alt="" />
