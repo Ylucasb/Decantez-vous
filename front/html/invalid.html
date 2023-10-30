@@ -1,16 +1,20 @@
 {{ define "errorPath" }}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Error</title>
-</head>
-<body >
-    <div class = "columnContainer alignCenter containerErrorPath">
-        <h1 class="textError">Error : Invalid Url Path</h1>
-    </div>
-</body>
+    <link rel="stylesheet" href="../css/invalid.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Erreur</h1>
+      <img src="../img/logo.png" alt="" />
+      <h2>Vous n'avez pas d'autorisation !</h2>
+      <a href="/">Se connecter</a>
+    </main>
+  </body>
 </html>
 {{ end }}
