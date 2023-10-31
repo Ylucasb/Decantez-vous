@@ -10,6 +10,9 @@
 - *In the directory `DECANTEZ-VOUS` execute `go mod init decantez-vous`.*
 - *In the directory `DECANTEZ-VOUS` execute `go mod tidy`.*
 - *In the directory `DECANTEZ-VOUS` execute `go run main.go`.*
+- *In the web site :
+  account : john.doe@decantez-vous.com
+  password : 123 .*
 
 ## **FEATURES:**
 - *Connexion page*
